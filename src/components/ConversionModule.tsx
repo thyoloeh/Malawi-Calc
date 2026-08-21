@@ -3,6 +3,7 @@ import {
   ArrowRightLeft, 
   Copy, 
   Check, 
+  ClipboardPaste,
   Calculator, 
   Ruler, 
   Scale, 
@@ -37,7 +38,7 @@ const ICON_MAP: Record<string, React.ReactNode> = {
 };
 
 export const ConversionModule: React.FC = () => {
-  const { addHistory, setActiveModule, setInjectedExpression } = useHistory();
+  const { addHistory, setActiveModule, setInjectedExpression, copyText, pasteText } = useHistory();
 
   const [selectedCategoryId, setSelectedCategoryId] = useState<string>('length');
   const activeCategory = useMemo(() => {
@@ -48,6 +49,7 @@ export const ConversionModule: React.FC = () => {
   const [toUnitId, setToUnitId] = useState<string>(activeCategory.units[1]?.id || '');
   const [inputValue, setInputValue] = useState<string>('1');
   const [copied, setCopied] = useState<boolean>(false);
+  const [pasted, setPasted] = useState<boolean>(false);
 
   const handleCategorySelect = (cat: UnitCategory) => {
     setSelectedCategoryId(cat.id);
@@ -77,10 +79,23 @@ export const ConversionModule: React.FC = () => {
     }
   }, [inputValue, fromUnitId, toUnitId, selectedCategoryId]);
 
-  const handleCopy = (text: string) => {
-    navigator.clipboard.writeText(text);
+  const handleCopy = async (text: string) => {
+    await copyText(text);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
+  };
+
+  const handlePasteInput = async () => {
+    const text = await pasteText();
+    if (text) {
+      const sanitized = text.replace(/−/g, '-').replace(/,/g, '').trim();
+      const num = parseFloat(sanitized);
+      if (!isNaN(num)) {
+        setInputValue(String(num));
+        setPasted(true);
+        setTimeout(() => setPasted(false), 2000);
+      }
+    }
   };
 
   const handleSaveToHistory = () => {
@@ -123,9 +138,9 @@ export const ConversionModule: React.FC = () => {
   }, [inputValue, fromUnitId, selectedCategoryId, activeCategory]);
 
   return (
-    <div id="conversion-module" className="w-full max-w-2xl mx-auto flex flex-col gap-2">
+    <div id="conversion-module" className="w-full max-w-2xl md:max-w-4xl lg:max-w-5xl mx-auto flex flex-col gap-3 sm:gap-4 flex-1">
       {/* Category Pills Slider */}
-      <div className="flex items-center gap-1 overflow-x-auto p-1 bg-[#1C1C1E] rounded-full border border-[#2C2C2E] scrollbar-none">
+      <div className="flex items-center gap-1.5 overflow-x-auto p-1.5 bg-[#1C1C1E] rounded-2xl sm:rounded-full border border-[#2C2C2E] scrollbar-none">
         {UNIT_CATEGORIES.map((cat) => {
           const isActive = cat.id === selectedCategoryId;
           return (
@@ -133,7 +148,7 @@ export const ConversionModule: React.FC = () => {
               key={cat.id}
               type="button"
               onClick={() => handleCategorySelect(cat)}
-              className={`flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-semibold whitespace-nowrap transition-all shrink-0 ${
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all shrink-0 ${
                 isActive
                   ? 'bg-[#FF9F0A] text-white shadow-sm font-bold'
                   : 'text-gray-400 hover:text-white hover:bg-[#242424]'
@@ -147,23 +162,23 @@ export const ConversionModule: React.FC = () => {
       </div>
 
       {/* Main Converter Card */}
-      <div className="bg-[#1C1C1E] p-2.5 sm:p-3 rounded-2xl border border-[#2C2C2E] shadow-xl flex flex-col gap-2.5">
+      <div className="bg-[#1C1C1E] p-3 sm:p-4 rounded-2xl sm:rounded-3xl border border-[#2C2C2E] shadow-xl flex flex-col gap-3">
         {/* Dual Input/Output Conversion Box */}
-        <div className="grid grid-cols-1 sm:grid-cols-11 gap-1.5 items-center bg-black p-2 rounded-xl border border-[#242424]">
+        <div className="grid grid-cols-1 sm:grid-cols-11 gap-2 items-center bg-black p-3 rounded-2xl border border-[#242424]">
           {/* FROM Unit Box */}
-          <div className="sm:col-span-5 flex flex-col gap-1">
-            <span className="text-[9px] text-gray-500 font-mono uppercase tracking-wider">From</span>
+          <div className="sm:col-span-5 flex flex-col gap-1.5">
+            <span className="text-[11px] text-gray-500 font-mono uppercase tracking-wider">From</span>
             <NumInput
               value={inputValue}
               onChange={setInputValue}
               placeholder="0"
               className="w-full"
-              inputClassName="h-8 text-sm"
+              inputClassName="h-10 text-base font-mono"
             />
             <select
               value={fromUnitId}
               onChange={(e) => setFromUnitId(e.target.value)}
-              className="w-full p-1 bg-[#1C1C1E] border border-[#333333] rounded-md text-[11px] font-medium text-gray-300 focus:outline-none"
+              className="w-full p-2 bg-[#1C1C1E] border border-[#333333] rounded-xl text-xs sm:text-sm font-medium text-gray-300 focus:outline-none"
             >
               {activeCategory.units.map((u) => (
                 <option key={u.id} value={u.id}>
@@ -174,27 +189,27 @@ export const ConversionModule: React.FC = () => {
           </div>
 
           {/* SWAP BUTTON */}
-          <div className="sm:col-span-1 flex items-center justify-center my-0.5 sm:my-0">
+          <div className="sm:col-span-1 flex items-center justify-center my-1 sm:my-0">
             <button
               type="button"
               onClick={handleSwap}
               title="Swap Units"
-              className="p-1.5 rounded-full bg-[#242424] hover:bg-[#333333] text-[#FF9F0A] border border-[#333333] transition-transform active:rotate-180"
+              className="p-2 rounded-full bg-[#242424] hover:bg-[#333333] text-[#FF9F0A] border border-[#333333] transition-transform active:rotate-180"
             >
-              <ArrowRightLeft className="w-3.5 h-3.5" />
+              <ArrowRightLeft className="w-4 h-4" />
             </button>
           </div>
 
           {/* TO Unit Box */}
-          <div className="sm:col-span-5 flex flex-col gap-1">
-            <span className="text-[9px] text-gray-500 font-mono uppercase tracking-wider">To (Result)</span>
-            <div className="w-full h-8 px-2.5 flex items-center bg-[#242424]/60 border border-[#333333] rounded-md font-mono text-sm font-bold text-[#30D158] truncate">
+          <div className="sm:col-span-5 flex flex-col gap-1.5">
+            <span className="text-[11px] text-gray-500 font-mono uppercase tracking-wider">To (Result)</span>
+            <div className="w-full h-10 px-3 flex items-center bg-[#242424]/60 border border-[#333333] rounded-xl font-mono text-base font-bold text-[#30D158] truncate">
               {conversionData.formattedResult || '—'}
             </div>
             <select
               value={toUnitId}
               onChange={(e) => setToUnitId(e.target.value)}
-              className="w-full p-1 bg-[#1C1C1E] border border-[#333333] rounded-md text-[11px] font-medium text-gray-300 focus:outline-none"
+              className="w-full p-2 bg-[#1C1C1E] border border-[#333333] rounded-xl text-xs sm:text-sm font-medium text-gray-300 focus:outline-none"
             >
               {activeCategory.units.map((u) => (
                 <option key={u.id} value={u.id}>
@@ -207,12 +222,12 @@ export const ConversionModule: React.FC = () => {
 
         {/* Formula details */}
         {conversionData.formula && (
-          <div className="flex items-center justify-between px-2.5 py-1 bg-black/40 rounded-lg border border-[#242424] text-[11px]">
-            <span className="text-gray-400 text-[10px]">Formula: <strong className="text-gray-200 font-mono">{conversionData.formula}</strong></span>
+          <div className="flex items-center justify-between px-3 py-1.5 bg-black/40 rounded-xl border border-[#242424] text-xs">
+            <span className="text-gray-400 text-xs">Formula: <strong className="text-gray-200 font-mono">{conversionData.formula}</strong></span>
             <button
               type="button"
               onClick={handleSaveToHistory}
-              className="text-[#FF9F0A] hover:underline text-[10px] font-bold"
+              className="text-[#FF9F0A] hover:underline text-xs font-bold"
             >
               Save Result
             </button>
@@ -220,23 +235,23 @@ export const ConversionModule: React.FC = () => {
         )}
 
         {/* Quick Category Unit Multi-Converter Grid */}
-        <div className="flex flex-col gap-1">
-          <span className="text-[9px] text-gray-500 font-mono uppercase tracking-wider">Equivalent Values</span>
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-1">
+        <div className="flex flex-col gap-1.5">
+          <span className="text-[11px] text-gray-500 font-mono uppercase tracking-wider">Equivalent Values</span>
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-1.5">
             {quickComparisons.map((c) => (
               <div
                 key={c.unit.id}
                 onClick={() => setToUnitId(c.unit.id)}
-                className={`p-1.5 rounded-lg border transition-all cursor-pointer ${
+                className={`p-2 rounded-xl border transition-all cursor-pointer ${
                   toUnitId === c.unit.id
                     ? 'bg-[#30D158]/10 border-[#30D158]/40'
                     : 'bg-black/40 border-[#242424] hover:bg-[#242424]'
                 }`}
               >
-                <span className="text-[9px] text-gray-400 block truncate">{c.unit.name}</span>
-                <div className="flex items-baseline justify-between gap-1">
-                  <span className="font-mono text-[11px] font-bold text-white truncate">{c.result}</span>
-                  <span className="text-[9px] text-[#FF9F0A] font-mono shrink-0">{c.unit.symbol}</span>
+                <span className="text-xs text-gray-400 block truncate">{c.unit.name}</span>
+                <div className="flex items-baseline justify-between gap-1 mt-0.5">
+                  <span className="font-mono text-xs sm:text-sm font-bold text-white truncate">{c.result}</span>
+                  <span className="text-xs text-[#FF9F0A] font-mono shrink-0">{c.unit.symbol}</span>
                 </div>
               </div>
             ))}
@@ -244,21 +259,21 @@ export const ConversionModule: React.FC = () => {
         </div>
 
         {/* Footer Actions */}
-        <div className="flex items-center justify-end gap-1.5 pt-1 border-t border-[#2C2C2E]/60 text-xs">
+        <div className="flex items-center justify-end gap-2 pt-1 border-t border-[#2C2C2E]/60 text-xs">
           <button
             type="button"
             onClick={() => handleCopy(conversionData.formattedResult || '')}
-            className="flex items-center gap-1 px-2.5 py-0.5 bg-[#242424] hover:bg-[#333333] text-gray-300 hover:text-white rounded-full transition-colors border border-[#333333] text-[11px]"
+            className="flex items-center gap-1.5 px-3 py-1.5 bg-[#242424] hover:bg-[#333333] text-gray-300 hover:text-white rounded-full transition-colors border border-[#333333] text-xs"
           >
-            {copied ? <Check className="w-3 h-3 text-[#30D158]" /> : <Copy className="w-3 h-3" />}
+            {copied ? <Check className="w-3.5 h-3.5 text-[#30D158]" /> : <Copy className="w-3.5 h-3.5" />}
             <span>{copied ? 'Copied' : 'Copy'}</span>
           </button>
           <button
             type="button"
             onClick={() => handleSendToCalc(conversionData.formattedResult || '0')}
-            className="flex items-center gap-1 px-2.5 py-0.5 bg-[#242424] hover:bg-[#333333] text-gray-300 hover:text-white rounded-full transition-colors border border-[#333333] text-[11px]"
+            className="flex items-center gap-1.5 px-3 py-1.5 bg-[#242424] hover:bg-[#333333] text-gray-300 hover:text-white rounded-full transition-colors border border-[#333333] text-xs"
           >
-            <Calculator className="w-3 h-3 text-[#FF9F0A]" />
+            <Calculator className="w-3.5 h-3.5 text-[#FF9F0A]" />
             <span>Use in Calc</span>
           </button>
         </div>

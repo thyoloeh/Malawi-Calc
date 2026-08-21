@@ -69,26 +69,26 @@ export const StatisticsModule: React.FC = () => {
   };
 
   return (
-    <div id="statistics-module" className="w-full max-w-2xl mx-auto flex flex-col gap-2">
+    <div id="statistics-module" className="w-full max-w-2xl md:max-w-4xl lg:max-w-5xl mx-auto flex flex-col gap-3 sm:gap-4 flex-1">
       {/* Top Header Card: Sample Sets & Input */}
-      <div className="bg-[#1C1C1E] p-2.5 sm:p-3 rounded-2xl border border-[#2C2C2E] shadow-xl flex flex-col gap-2">
+      <div className="bg-[#1C1C1E] p-3 sm:p-4 rounded-2xl sm:rounded-3xl border border-[#2C2C2E] shadow-xl flex flex-col gap-3">
         {/* Sample Datasets Bar */}
-        <div className="flex items-center justify-between gap-1 overflow-x-auto pb-0.5 scrollbar-none">
-          <div className="flex items-center gap-1">
-            <span className="text-[9px] text-gray-500 font-mono uppercase mr-0.5">Presets:</span>
+        <div className="flex items-center justify-between gap-1.5 overflow-x-auto pb-1 scrollbar-none">
+          <div className="flex items-center gap-1.5">
+            <span className="text-[11px] text-gray-500 font-mono uppercase mr-0.5">Presets:</span>
             {PRESET_DATASETS.map((p) => (
               <button
                 key={p.name}
                 type="button"
                 onClick={() => setRawInput(p.data)}
-                className="px-2 py-0.5 rounded-full bg-[#242424] hover:bg-[#333333] text-[10px] text-gray-300 border border-[#333333] transition-colors whitespace-nowrap"
+                className="px-3 py-1 rounded-full bg-[#242424] hover:bg-[#333333] text-xs text-gray-300 border border-[#333333] transition-colors whitespace-nowrap"
               >
                 {p.name}
               </button>
             ))}
           </div>
 
-          <span className="px-1.5 py-0.5 rounded-full bg-black text-[9px] font-mono text-[#FF9F0A] border border-[#2C2C2E] shrink-0">
+          <span className="px-2.5 py-1 rounded-full bg-black text-xs font-mono text-[#FF9F0A] border border-[#2C2C2E] shrink-0">
             N = {parsedNumbers.length}
           </span>
         </div>
@@ -100,19 +100,19 @@ export const StatisticsModule: React.FC = () => {
           value={rawInput}
           onChange={(e) => setRawInput(e.target.value)}
           placeholder="Enter numbers separated by spaces or commas..."
-          className="w-full p-2 bg-black border border-[#333333] rounded-lg font-mono text-xs text-white focus:border-[#FF9F0A] focus:outline-none"
+          className="w-full p-3 bg-black border border-[#333333] rounded-xl font-mono text-sm text-white focus:border-[#FF9F0A] focus:outline-none"
         />
 
         {/* Metrics Grid: 6 Primary Key Measurement Tiles */}
         {stats ? (
-          <div className="grid grid-cols-3 gap-1.5">
+          <div className="grid grid-cols-3 gap-2">
             {/* Mean */}
             <div 
               onClick={() => handleSendToCalc(stats.mean)}
-              className="p-1.5 bg-black/60 hover:bg-[#242424] rounded-xl border border-[#2C2C2E] flex flex-col items-center cursor-pointer transition-all group"
+              className="p-2.5 bg-black/60 hover:bg-[#242424] rounded-xl border border-[#2C2C2E] flex flex-col items-center cursor-pointer transition-all group"
             >
-              <span className="text-[9px] text-gray-400 font-medium group-hover:text-[#FF9F0A]">Mean (μ)</span>
-              <span className="font-mono text-xs sm:text-sm font-bold text-[#30D158] truncate">
+              <span className="text-xs text-gray-400 font-medium group-hover:text-[#FF9F0A]">Mean (μ)</span>
+              <span className="font-mono text-sm sm:text-base font-bold text-[#30D158] truncate">
                 {formatResult(stats.mean, 4)}
               </span>
             </div>
@@ -120,10 +120,10 @@ export const StatisticsModule: React.FC = () => {
             {/* Median */}
             <div 
               onClick={() => handleSendToCalc(stats.median)}
-              className="p-1.5 bg-black/60 hover:bg-[#242424] rounded-xl border border-[#2C2C2E] flex flex-col items-center cursor-pointer transition-all group"
+              className="p-2.5 bg-black/60 hover:bg-[#242424] rounded-xl border border-[#2C2C2E] flex flex-col items-center cursor-pointer transition-all group"
             >
-              <span className="text-[9px] text-gray-400 font-medium group-hover:text-[#FF9F0A]">Median</span>
-              <span className="font-mono text-xs sm:text-sm font-bold text-white truncate">
+              <span className="text-xs text-gray-400 font-medium group-hover:text-[#FF9F0A]">Median</span>
+              <span className="font-mono text-sm sm:text-base font-bold text-white truncate">
                 {formatResult(stats.median, 4)}
               </span>
             </div>
@@ -131,10 +131,10 @@ export const StatisticsModule: React.FC = () => {
             {/* Mode */}
             <div 
               onClick={() => stats.modes && stats.modes.length > 0 && handleSendToCalc(stats.modes[0])}
-              className="p-1.5 bg-black/60 hover:bg-[#242424] rounded-xl border border-[#2C2C2E] flex flex-col items-center cursor-pointer transition-all group"
+              className="p-2.5 bg-black/60 hover:bg-[#242424] rounded-xl border border-[#2C2C2E] flex flex-col items-center cursor-pointer transition-all group"
             >
-              <span className="text-[9px] text-gray-400 font-medium group-hover:text-[#FF9F0A]">Mode</span>
-              <span className="font-mono text-xs sm:text-sm font-bold text-white truncate">
+              <span className="text-xs text-gray-400 font-medium group-hover:text-[#FF9F0A]">Mode</span>
+              <span className="font-mono text-sm sm:text-base font-bold text-white truncate">
                 {stats.modes && stats.modes.length > 0 ? stats.modes.join(', ') : 'None'}
               </span>
             </div>
@@ -142,18 +142,18 @@ export const StatisticsModule: React.FC = () => {
             {/* Std Dev (s) */}
             <div 
               onClick={() => handleSendToCalc(stats.sampleStdDev)}
-              className="p-1.5 bg-black/60 hover:bg-[#242424] rounded-xl border border-[#2C2C2E] flex flex-col items-center cursor-pointer transition-all group"
+              className="p-2.5 bg-black/60 hover:bg-[#242424] rounded-xl border border-[#2C2C2E] flex flex-col items-center cursor-pointer transition-all group"
             >
-              <span className="text-[9px] text-gray-400 font-medium group-hover:text-[#FF9F0A]">Std Dev (s)</span>
-              <span className="font-mono text-xs sm:text-sm font-bold text-[#FF9F0A] truncate">
+              <span className="text-xs text-gray-400 font-medium group-hover:text-[#FF9F0A]">Std Dev (s)</span>
+              <span className="font-mono text-sm sm:text-base font-bold text-[#FF9F0A] truncate">
                 {formatResult(stats.sampleStdDev, 4)}
               </span>
             </div>
 
             {/* Min / Max */}
-            <div className="p-1.5 bg-black/60 rounded-xl border border-[#2C2C2E] flex flex-col items-center">
-              <span className="text-[9px] text-gray-400 font-medium">Min / Max</span>
-              <span className="font-mono text-[11px] font-bold text-white truncate">
+            <div className="p-2.5 bg-black/60 rounded-xl border border-[#2C2C2E] flex flex-col items-center">
+              <span className="text-xs text-gray-400 font-medium">Min / Max</span>
+              <span className="font-mono text-xs sm:text-sm font-bold text-white truncate">
                 {stats.min} ... {stats.max}
               </span>
             </div>
@@ -161,38 +161,38 @@ export const StatisticsModule: React.FC = () => {
             {/* Sum (Σx) */}
             <div 
               onClick={() => handleSendToCalc(stats.sum)}
-              className="p-1.5 bg-black/60 hover:bg-[#242424] rounded-xl border border-[#2C2C2E] flex flex-col items-center cursor-pointer transition-all group"
+              className="p-2.5 bg-black/60 hover:bg-[#242424] rounded-xl border border-[#2C2C2E] flex flex-col items-center cursor-pointer transition-all group"
             >
-              <span className="text-[9px] text-gray-400 font-medium group-hover:text-[#FF9F0A]">Sum (Σx)</span>
-              <span className="font-mono text-xs sm:text-sm font-bold text-white truncate">
+              <span className="text-xs text-gray-400 font-medium group-hover:text-[#FF9F0A]">Sum (Σx)</span>
+              <span className="font-mono text-sm sm:text-base font-bold text-white truncate">
                 {formatResult(stats.sum, 4)}
               </span>
             </div>
           </div>
         ) : (
-          <div className="p-3 bg-black/40 rounded-xl text-center text-xs text-gray-500 font-mono">
+          <div className="p-4 bg-black/40 rounded-xl text-center text-xs text-gray-500 font-mono">
             Enter numerical data to calculate statistics.
           </div>
         )}
 
         {/* Extended Quartile Strip */}
         {stats && (
-          <div className="grid grid-cols-4 gap-1 p-1.5 bg-black/30 rounded-lg border border-[#242424] text-[10px] font-mono text-center">
+          <div className="grid grid-cols-4 gap-1.5 p-2 bg-black/30 rounded-xl border border-[#242424] text-xs font-mono text-center">
             <div>
-              <span className="text-gray-500 block text-[8px]">Q1 (25%)</span>
-              <span className="font-bold text-gray-200">{formatResult(stats.q1, 2)}</span>
+              <span className="text-gray-500 block text-[10px]">Q1 (25%)</span>
+              <span className="font-bold text-gray-200 text-xs sm:text-sm">{formatResult(stats.q1, 2)}</span>
             </div>
             <div>
-              <span className="text-gray-500 block text-[8px]">Q3 (75%)</span>
-              <span className="font-bold text-gray-200">{formatResult(stats.q3, 2)}</span>
+              <span className="text-gray-500 block text-[10px]">Q3 (75%)</span>
+              <span className="font-bold text-gray-200 text-xs sm:text-sm">{formatResult(stats.q3, 2)}</span>
             </div>
             <div>
-              <span className="text-gray-500 block text-[8px]">IQR</span>
-              <span className="font-bold text-[#30D158]">{formatResult(stats.iqr, 2)}</span>
+              <span className="text-gray-500 block text-[10px]">IQR</span>
+              <span className="font-bold text-[#30D158] text-xs sm:text-sm">{formatResult(stats.iqr, 2)}</span>
             </div>
             <div>
-              <span className="text-gray-500 block text-[8px]">Variance (s²)</span>
-              <span className="font-bold text-gray-200">{formatResult(stats.sampleVariance, 2)}</span>
+              <span className="text-gray-500 block text-[10px]">Variance (s²)</span>
+              <span className="font-bold text-gray-200 text-xs sm:text-sm">{formatResult(stats.sampleVariance, 2)}</span>
             </div>
           </div>
         )}
@@ -202,7 +202,7 @@ export const StatisticsModule: React.FC = () => {
           <button
             type="button"
             onClick={() => setRawInput('')}
-            className="text-gray-400 hover:text-white text-[10px]"
+            className="text-gray-400 hover:text-white text-xs font-medium"
           >
             Clear Data
           </button>
@@ -210,7 +210,7 @@ export const StatisticsModule: React.FC = () => {
             <button
               type="button"
               onClick={handleSaveToHistory}
-              className="px-2.5 py-0.5 bg-[#FF9F0A]/20 hover:bg-[#FF9F0A]/30 text-[#FF9F0A] border border-[#FF9F0A]/40 rounded-full text-[10px] font-medium transition-colors"
+              className="px-3 py-1 bg-[#FF9F0A]/20 hover:bg-[#FF9F0A]/30 text-[#FF9F0A] border border-[#FF9F0A]/40 rounded-full text-xs font-semibold transition-colors"
             >
               Save to History
             </button>

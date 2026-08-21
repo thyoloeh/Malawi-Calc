@@ -240,15 +240,15 @@ export const FractionsModule: React.FC = () => {
   const hasAnyBrackets = terms.some(t => (t.openBrackets || 0) > 0 || (t.closeBrackets || 0) > 0);
 
   return (
-    <div id="fractions-module" className="w-full max-w-2xl mx-auto flex flex-col gap-2">
+    <div id="fractions-module" className="w-full max-w-2xl md:max-w-4xl lg:max-w-5xl mx-auto flex flex-col gap-3 sm:gap-4 flex-1">
       {/* Mode Selector Header Bar */}
-      <div className="flex items-center justify-between px-2 py-1 bg-[#1C1C1E] rounded-full border border-[#2C2C2E] text-xs">
-        <div className="flex items-center gap-1 overflow-x-auto scrollbar-none">
+      <div className="flex items-center justify-between px-3 py-2 bg-[#1C1C1E] rounded-2xl sm:rounded-full border border-[#2C2C2E] shadow-md overflow-x-auto scrollbar-none">
+        <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-none">
           <button
             id="tab-fraction-arithmetic"
             type="button"
             onClick={() => setActiveTab('arithmetic')}
-            className={`px-2.5 py-0.5 rounded-full text-[11px] font-semibold whitespace-nowrap transition-all ${
+            className={`px-3 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap transition-all ${
               activeTab === 'arithmetic'
                 ? 'bg-[#FF9F0A] text-white shadow-sm font-bold'
                 : 'text-gray-400 hover:text-white'
@@ -260,7 +260,7 @@ export const FractionsModule: React.FC = () => {
             id="tab-fraction-simplify"
             type="button"
             onClick={() => setActiveTab('simplify')}
-            className={`px-2.5 py-0.5 rounded-full text-[11px] font-semibold whitespace-nowrap transition-all ${
+            className={`px-3 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap transition-all ${
               activeTab === 'simplify'
                 ? 'bg-[#FF9F0A] text-white shadow-sm font-bold'
                 : 'text-gray-400 hover:text-white'
@@ -272,7 +272,7 @@ export const FractionsModule: React.FC = () => {
             id="tab-fraction-decimal"
             type="button"
             onClick={() => setActiveTab('decimal')}
-            className={`px-2.5 py-0.5 rounded-full text-[11px] font-semibold whitespace-nowrap transition-all ${
+            className={`px-3 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap transition-all ${
               activeTab === 'decimal'
                 ? 'bg-[#FF9F0A] text-white shadow-sm font-bold'
                 : 'text-gray-400 hover:text-white'
@@ -285,29 +285,29 @@ export const FractionsModule: React.FC = () => {
         <button
           type="button"
           onClick={handleSaveHistory}
-          className="px-2 py-0.5 rounded-full bg-[#242424] hover:bg-[#333333] text-[10px] text-[#FF9F0A] border border-[#333333] transition-colors font-bold shrink-0"
+          className="px-3 py-1 sm:py-1.5 rounded-full bg-[#242424] hover:bg-[#333333] text-xs sm:text-sm text-[#FF9F0A] border border-[#333333] transition-colors font-bold shrink-0 shadow-sm"
         >
           Save
         </button>
       </div>
 
       {/* Main Display & Input Container */}
-      <div className="bg-[#1C1C1E] p-2.5 sm:p-3.5 rounded-2xl border border-[#2C2C2E] shadow-xl flex flex-col gap-2.5">
+      <div className="bg-[#1C1C1E] p-3.5 sm:p-5 rounded-2xl sm:rounded-3xl border border-[#2C2C2E] shadow-xl flex flex-col gap-3.5 flex-1">
         {activeTab === 'arithmetic' && (
-          <div className="flex flex-col gap-2.5">
+          <div className="flex flex-col gap-3.5">
             {/* Top Config Row: Term Count & BODMAS / Bracket Toolbar */}
-            <div className="flex flex-wrap items-center justify-between gap-1.5 px-0.5 text-xs">
-              <div className="flex items-center gap-1.5">
-                <span className="text-gray-400 font-medium text-[10px]">Terms:</span>
-                <div className="inline-flex bg-black rounded-md p-0.5 border border-[#2C2C2E]">
+            <div className="flex flex-wrap items-center justify-between gap-2 px-1 text-xs sm:text-sm">
+              <div className="flex items-center gap-2">
+                <span className="text-gray-400 font-medium text-xs sm:text-sm">Terms:</span>
+                <div className="inline-flex bg-black rounded-lg p-0.5 border border-[#2C2C2E]">
                   {[2, 3, 4, 5].map((count) => (
                     <button
                       key={count}
                       type="button"
                       onClick={() => handleSetTermCount(count)}
-                      className={`px-1.5 py-0.2 rounded font-mono text-[11px] font-bold transition-all ${
+                      className={`px-2.5 py-1 rounded-md font-mono text-xs sm:text-sm font-bold transition-all ${
                         terms.length === count
-                          ? 'bg-[#FF9F0A] text-white'
+                          ? 'bg-[#FF9F0A] text-white shadow-sm'
                           : 'text-gray-400 hover:text-white'
                       }`}
                     >
@@ -321,7 +321,7 @@ export const FractionsModule: React.FC = () => {
                   type="button"
                   onClick={handleWrapFirstTwo}
                   title="Group first two terms with brackets"
-                  className="px-1.5 py-0.5 rounded bg-[#242424] hover:bg-[#333333] text-gray-300 hover:text-white text-[10px] font-mono border border-[#2C2C2E] transition-colors"
+                  className="px-2.5 py-1 rounded-lg bg-[#242424] hover:bg-[#333333] text-gray-300 hover:text-white text-xs font-mono border border-[#2C2C2E] transition-colors shadow-sm"
                 >
                   (T₁ op T₂)
                 </button>
@@ -330,44 +330,44 @@ export const FractionsModule: React.FC = () => {
                     type="button"
                     onClick={handleClearAllBrackets}
                     title="Clear all brackets"
-                    className="px-1.5 py-0.5 rounded bg-[#242424] hover:bg-[#333333] text-gray-400 hover:text-red-400 text-[10px] border border-[#2C2C2E] transition-colors"
+                    className="px-2.5 py-1 rounded-lg bg-[#242424] hover:bg-[#333333] text-gray-400 hover:text-red-400 text-xs border border-[#2C2C2E] transition-colors shadow-sm"
                   >
                     Clear ( )
                   </button>
                 )}
               </div>
 
-              <div className="flex items-center gap-1.5">
-                <span className="text-[9px] text-[#FF9F0A] bg-[#FF9F0A]/10 px-1.5 py-0.2 rounded-full border border-[#FF9F0A]/30 font-mono font-medium">
+              <div className="flex items-center gap-2">
+                <span className="text-xs text-[#FF9F0A] bg-[#FF9F0A]/10 px-2.5 py-0.5 rounded-full border border-[#FF9F0A]/30 font-mono font-semibold">
                   BODMAS: [B] → ÷ → × → + → −
                 </span>
                 <button
                   type="button"
                   onClick={handleResetTerms}
                   title="Reset terms"
-                  className="p-1 rounded-full text-gray-400 hover:text-white hover:bg-[#242424] transition-colors"
+                  className="p-1.5 rounded-full text-gray-400 hover:text-white hover:bg-[#242424] transition-colors"
                 >
-                  <RotateCcw className="w-3 h-3" />
+                  <RotateCcw className="w-4 h-4" />
                 </button>
               </div>
             </div>
 
             {/* Live Interactive Math Equation Row with Brackets */}
-            <div className="flex items-center gap-1.5 p-2 bg-black rounded-xl border border-[#242424] overflow-x-auto scrollbar-thin scrollbar-thumb-[#333333]">
+            <div className="flex items-center gap-2 p-3 bg-black rounded-2xl border border-[#242424] overflow-x-auto scrollbar-thin scrollbar-thumb-[#333333] min-h-[120px]">
               {terms.map((term, idx) => (
                 <React.Fragment key={term.id || idx}>
                   {/* Bracket & Fraction Term Wrapper */}
-                  <div className="flex items-center gap-0.5 shrink-0">
+                  <div className="flex items-center gap-1 shrink-0">
                     {/* Left Bracket Toggle / Display */}
                     <div className="flex flex-col items-center">
                       <button
                         type="button"
                         onClick={() => toggleOpenBracket(idx)}
                         title="Toggle opening bracket '(' before this term"
-                        className={`px-1 py-0.5 rounded text-xs font-mono font-bold transition-all ${
+                        className={`px-2 py-1.5 rounded-lg text-sm font-mono font-bold transition-all ${
                           (term.openBrackets || 0) > 0
                             ? 'bg-[#30D158] text-black font-extrabold shadow-sm scale-105'
-                            : 'text-gray-500 hover:text-white bg-[#1C1C1E] border border-[#2C2C2E]'
+                            : 'text-gray-400 hover:text-white bg-[#1C1C1E] border border-[#2C2C2E]'
                         }`}
                       >
                         {term.openBrackets && term.openBrackets > 1 ? `(${term.openBrackets}` : '('}
@@ -375,21 +375,21 @@ export const FractionsModule: React.FC = () => {
                     </div>
 
                     {/* Fraction Term Box */}
-                    <div className={`flex flex-col items-center gap-0.5 p-1 bg-[#1C1C1E] rounded-lg border transition-all ${
+                    <div className={`flex flex-col items-center gap-1 p-2 bg-[#1C1C1E] rounded-xl border transition-all ${
                       (term.openBrackets || 0) > 0 || (term.closeBrackets || 0) > 0
                         ? 'border-[#30D158]/50 bg-[#1C1C1E]'
                         : 'border-[#2C2C2E]'
                     }`}>
-                      <div className="flex items-center justify-between w-full px-0.5 text-[8px] text-gray-400 font-mono">
-                        <span>T{idx + 1}</span>
-                        <div className="flex items-center gap-0.5">
+                      <div className="flex items-center justify-between w-full px-1 text-[10px] text-gray-400 font-mono">
+                        <span className="font-bold">T{idx + 1}</span>
+                        <div className="flex items-center gap-1">
                           <button
                             type="button"
                             onClick={() => handleUpdateTerm(idx, { isMixed: !term.isMixed })}
-                            className={`px-1 py-0.2 rounded text-[7px] font-semibold border transition-all ${
+                            className={`px-1.5 py-0.5 rounded text-[9px] font-semibold border transition-all ${
                               term.isMixed 
                                 ? 'bg-[#FF9F0A]/20 text-[#FF9F0A] border-[#FF9F0A]/50' 
-                                : 'text-gray-500 border-transparent hover:text-gray-300'
+                                : 'text-gray-400 border-transparent hover:text-gray-200'
                             }`}
                           >
                             {term.isMixed ? 'Mix' : '+Mix'}
@@ -398,37 +398,37 @@ export const FractionsModule: React.FC = () => {
                             <button
                               type="button"
                               onClick={() => handleRemoveTerm(idx)}
-                              className="text-gray-500 hover:text-red-400 p-0.2"
+                              className="text-gray-500 hover:text-red-400 p-0.5"
                               title="Remove term"
                             >
-                              <Trash2 className="w-2.5 h-2.5" />
+                              <Trash2 className="w-3 h-3" />
                             </button>
                           )}
                         </div>
                       </div>
 
-                      <div className="flex items-center gap-0.5">
+                      <div className="flex items-center gap-1">
                         {term.isMixed && (
                           <div className="flex flex-col items-center">
                             <NumInput
                               value={term.whole}
                               onChange={(val) => handleUpdateTerm(idx, { whole: val })}
                               placeholder="W"
-                              className="w-10"
+                              className="w-12 sm:w-14"
                             />
                           </div>
                         )}
-                        <div className="flex flex-col items-center gap-0.5">
+                        <div className="flex flex-col items-center gap-1">
                           <NumInput
                             value={term.num}
                             onChange={(val) => handleUpdateTerm(idx, { num: val })}
-                            className="w-11"
+                            className="w-13 sm:w-16"
                           />
                           <div className="w-full h-0.5 bg-gray-500 rounded-full" />
                           <NumInput
                             value={term.den}
                             onChange={(val) => handleUpdateTerm(idx, { den: val })}
-                            className="w-11"
+                            className="w-13 sm:w-16"
                           />
                         </div>
                       </div>
@@ -440,10 +440,10 @@ export const FractionsModule: React.FC = () => {
                         type="button"
                         onClick={() => toggleCloseBracket(idx)}
                         title="Toggle closing bracket ')' after this term"
-                        className={`px-1 py-0.5 rounded text-xs font-mono font-bold transition-all ${
+                        className={`px-2 py-1.5 rounded-lg text-sm font-mono font-bold transition-all ${
                           (term.closeBrackets || 0) > 0
                             ? 'bg-[#30D158] text-black font-extrabold shadow-sm scale-105'
-                            : 'text-gray-500 hover:text-white bg-[#1C1C1E] border border-[#2C2C2E]'
+                            : 'text-gray-400 hover:text-white bg-[#1C1C1E] border border-[#2C2C2E]'
                         }`}
                       >
                         {term.closeBrackets && term.closeBrackets > 1 ? `)${term.closeBrackets}` : ')'}
@@ -457,7 +457,7 @@ export const FractionsModule: React.FC = () => {
                       <select
                         value={operators[idx]}
                         onChange={(e) => handleUpdateOperator(idx, e.target.value as FractionOp)}
-                        className="bg-[#FF9F0A] hover:bg-[#FF9F0A]/90 text-white font-mono font-bold text-xs px-1 py-0.5 rounded border-none shadow cursor-pointer text-center outline-none"
+                        className="bg-[#FF9F0A] hover:bg-[#FFB03B] text-white font-mono font-bold text-base sm:text-lg px-2 py-1 rounded-lg border-none shadow-md cursor-pointer text-center outline-none"
                       >
                         <option value="+">+</option>
                         <option value="−">−</option>
@@ -474,50 +474,50 @@ export const FractionsModule: React.FC = () => {
                 <button
                   type="button"
                   onClick={handleAddTerm}
-                  className="flex flex-col items-center justify-center gap-0.5 p-1 bg-[#242424] hover:bg-[#333333] text-gray-400 hover:text-white rounded-lg border border-[#2C2C2E] border-dashed shrink-0 h-16 w-12 transition-colors"
+                  className="flex flex-col items-center justify-center gap-1 p-2 bg-[#242424] hover:bg-[#333333] text-gray-300 hover:text-white rounded-xl border border-[#2C2C2E] border-dashed shrink-0 h-20 w-16 transition-colors"
                   title="Add another fraction term"
                 >
-                  <Plus className="w-3.5 h-3.5 text-[#FF9F0A]" />
-                  <span className="text-[8px] font-medium">+Term</span>
+                  <Plus className="w-5 h-5 text-[#FF9F0A]" />
+                  <span className="text-[10px] font-semibold">+Term</span>
                 </button>
               )}
 
               {/* Equals Sign */}
-              <span className="text-gray-500 font-mono text-base font-bold px-0.5 shrink-0">=</span>
+              <span className="text-gray-400 font-mono text-xl font-bold px-1 shrink-0">=</span>
 
               {/* Result Preview Box in the Math Row */}
               <div className="shrink-0 flex items-center">
                 {bodmasResult.res ? (
-                  <div className="flex flex-col items-center gap-0.5 px-2 py-0.5 bg-[#30D158]/10 rounded-lg border border-[#30D158]/30">
-                    <span className="font-mono text-xs sm:text-sm font-bold text-[#30D158]">
+                  <div className="flex flex-col items-center gap-1 px-3.5 py-1.5 bg-[#30D158]/10 rounded-xl border border-[#30D158]/30">
+                    <span className="font-mono text-base sm:text-lg font-bold text-[#30D158]">
                       {bodmasResult.res.resultFraction.numerator}
                     </span>
                     <div className="w-full h-0.5 bg-[#30D158]" />
-                    <span className="font-mono text-xs sm:text-sm font-bold text-[#30D158]">
+                    <span className="font-mono text-base sm:text-lg font-bold text-[#30D158]">
                       {bodmasResult.res.resultFraction.denominator}
                     </span>
                   </div>
                 ) : (
-                  <span className="text-[#FF453A] text-[10px] font-mono max-w-28 text-center leading-tight">
+                  <span className="text-[#FF453A] text-xs font-mono max-w-32 text-center leading-tight">
                     {bodmasResult.error}
                   </span>
                 )}
               </div>
             </div>
 
-            {/* Quick Result Summary Cards (Single-Line Compact Row) */}
+            {/* Quick Result Summary Cards (Single-Line Compact Row with Enhanced Fonts) */}
             {bodmasResult.res && (
-              <div className="grid grid-cols-4 gap-1.5 bg-black/40 p-1.5 rounded-xl border border-[#242424]">
-                <div className="flex flex-col items-center justify-center p-1.5 bg-[#242424]/60 rounded-lg border border-[#2C2C2E]">
-                  <span className="text-[9px] text-gray-400 font-medium">Fraction</span>
-                  <span className="font-mono text-xs sm:text-sm font-bold text-[#30D158]">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 bg-black/40 p-2 sm:p-2.5 rounded-2xl border border-[#242424]">
+                <div className="flex flex-col items-center justify-center p-2 bg-[#242424]/60 rounded-xl border border-[#2C2C2E]">
+                  <span className="text-[10px] sm:text-xs text-gray-400 font-medium">Fraction</span>
+                  <span className="font-mono text-sm sm:text-base font-bold text-[#30D158]">
                     {bodmasResult.res.resultFraction.numerator}/{bodmasResult.res.resultFraction.denominator}
                   </span>
                 </div>
 
-                <div className="flex flex-col items-center justify-center p-1.5 bg-[#242424]/60 rounded-lg border border-[#2C2C2E]">
-                  <span className="text-[9px] text-gray-400 font-medium">Mixed</span>
-                  <span className="font-mono text-[11px] sm:text-xs font-bold text-white truncate max-w-full">
+                <div className="flex flex-col items-center justify-center p-2 bg-[#242424]/60 rounded-xl border border-[#2C2C2E]">
+                  <span className="text-[10px] sm:text-xs text-gray-400 font-medium">Mixed</span>
+                  <span className="font-mono text-xs sm:text-sm font-bold text-white truncate max-w-full">
                     {bodmasResult.res.mixed.whole !== 0 ? (
                       `${bodmasResult.res.mixed.whole} ${bodmasResult.res.mixed.numerator}/${bodmasResult.res.mixed.denominator}`
                     ) : (
@@ -526,16 +526,16 @@ export const FractionsModule: React.FC = () => {
                   </span>
                 </div>
 
-                <div className="flex flex-col items-center justify-center p-1.5 bg-[#242424]/60 rounded-lg border border-[#2C2C2E]">
-                  <span className="text-[9px] text-gray-400 font-medium">Decimal</span>
-                  <span className="font-mono text-[11px] sm:text-xs font-bold text-white">
+                <div className="flex flex-col items-center justify-center p-2 bg-[#242424]/60 rounded-xl border border-[#2C2C2E]">
+                  <span className="text-[10px] sm:text-xs text-gray-400 font-medium">Decimal</span>
+                  <span className="font-mono text-xs sm:text-sm font-bold text-white">
                     {formatResult(bodmasResult.res.decimal, 4)}
                   </span>
                 </div>
 
-                <div className="flex flex-col items-center justify-center p-1.5 bg-[#242424]/60 rounded-lg border border-[#2C2C2E]">
-                  <span className="text-[9px] text-gray-400 font-medium">Percentage</span>
-                  <span className="font-mono text-[11px] sm:text-xs font-bold text-[#FF9F0A]">
+                <div className="flex flex-col items-center justify-center p-2 bg-[#242424]/60 rounded-xl border border-[#2C2C2E]">
+                  <span className="text-[10px] sm:text-xs text-gray-400 font-medium">Percentage</span>
+                  <span className="font-mono text-xs sm:text-sm font-bold text-[#FF9F0A]">
                     {formatResult(bodmasResult.res.decimal * 100, 2)}%
                   </span>
                 </div>
@@ -545,46 +545,46 @@ export const FractionsModule: React.FC = () => {
         )}
 
         {activeTab === 'simplify' && (
-          <div className="flex flex-col gap-2.5">
-            <div className="flex items-center justify-center gap-2.5 p-2 bg-black rounded-xl border border-[#242424]">
+          <div className="flex flex-col gap-3.5">
+            <div className="flex items-center justify-center gap-3 p-3 bg-black rounded-2xl border border-[#242424] min-h-[100px]">
               {/* Input Fraction */}
-              <div className="flex flex-col items-center gap-0.5">
-                <NumInput value={simpNum} onChange={setSimpNum} className="w-14" />
+              <div className="flex flex-col items-center gap-1">
+                <NumInput value={simpNum} onChange={setSimpNum} className="w-16 sm:w-20" />
                 <div className="w-full h-0.5 bg-gray-500 rounded-full" />
-                <NumInput value={simpDen} onChange={setSimpDen} className="w-14" />
+                <NumInput value={simpDen} onChange={setSimpDen} className="w-16 sm:w-20" />
               </div>
 
-              <ArrowRight className="w-4 h-4 text-[#FF9F0A]" />
+              <ArrowRight className="w-5 h-5 text-[#FF9F0A]" />
 
               {/* Simplified Result */}
               {simp.simplified ? (
-                <div className="flex flex-col items-center gap-0.5 px-2.5 py-0.5 bg-[#30D158]/10 rounded-lg border border-[#30D158]/30">
-                  <span className="font-mono text-sm font-bold text-[#30D158]">
+                <div className="flex flex-col items-center gap-1 px-4 py-1.5 bg-[#30D158]/10 rounded-xl border border-[#30D158]/30">
+                  <span className="font-mono text-base sm:text-lg font-bold text-[#30D158]">
                     {simp.simplified.numerator}
                   </span>
                   <div className="w-full h-0.5 bg-[#30D158]" />
-                  <span className="font-mono text-sm font-bold text-[#30D158]">
+                  <span className="font-mono text-base sm:text-lg font-bold text-[#30D158]">
                     {simp.simplified.denominator}
                   </span>
                 </div>
               ) : (
-                <span className="text-[#FF453A] text-[10px] font-mono">{simp.error}</span>
+                <span className="text-[#FF453A] text-xs font-mono">{simp.error}</span>
               )}
             </div>
 
             {simp.simplified && (
-              <div className="grid grid-cols-3 gap-1.5 bg-black/40 p-1.5 rounded-xl border border-[#242424]">
-                <div className="flex flex-col items-center p-1.5 bg-[#242424]/60 rounded-lg border border-[#2C2C2E]">
-                  <span className="text-[9px] text-gray-400 font-medium">GCD Factor</span>
-                  <span className="font-mono text-xs font-bold text-[#FF9F0A]">{simp.gcdVal}</span>
+              <div className="grid grid-cols-3 gap-2 bg-black/40 p-2 sm:p-2.5 rounded-2xl border border-[#242424]">
+                <div className="flex flex-col items-center p-2 bg-[#242424]/60 rounded-xl border border-[#2C2C2E]">
+                  <span className="text-[10px] sm:text-xs text-gray-400 font-medium">GCD Factor</span>
+                  <span className="font-mono text-sm sm:text-base font-bold text-[#FF9F0A]">{simp.gcdVal}</span>
                 </div>
-                <div className="flex flex-col items-center p-1.5 bg-[#242424]/60 rounded-lg border border-[#2C2C2E]">
-                  <span className="text-[9px] text-gray-400 font-medium">Decimal</span>
-                  <span className="font-mono text-xs font-bold text-white">{formatResult(simp.decimal, 4)}</span>
+                <div className="flex flex-col items-center p-2 bg-[#242424]/60 rounded-xl border border-[#2C2C2E]">
+                  <span className="text-[10px] sm:text-xs text-gray-400 font-medium">Decimal</span>
+                  <span className="font-mono text-sm sm:text-base font-bold text-white">{formatResult(simp.decimal, 4)}</span>
                 </div>
-                <div className="flex flex-col items-center p-1.5 bg-[#242424]/60 rounded-lg border border-[#2C2C2E]">
-                  <span className="text-[9px] text-gray-400 font-medium">Percentage</span>
-                  <span className="font-mono text-xs font-bold text-white">{simp.percent}%</span>
+                <div className="flex flex-col items-center p-2 bg-[#242424]/60 rounded-xl border border-[#2C2C2E]">
+                  <span className="text-[10px] sm:text-xs text-gray-400 font-medium">Percentage</span>
+                  <span className="font-mono text-sm sm:text-base font-bold text-white">{simp.percent}%</span>
                 </div>
               </div>
             )}
@@ -592,37 +592,37 @@ export const FractionsModule: React.FC = () => {
         )}
 
         {activeTab === 'decimal' && (
-          <div className="flex flex-col gap-2.5">
-            <div className="flex items-center justify-center gap-2.5 p-2 bg-black rounded-xl border border-[#242424]">
+          <div className="flex flex-col gap-3.5">
+            <div className="flex items-center justify-center gap-3 p-3 bg-black rounded-2xl border border-[#242424] min-h-[100px]">
               <div className="flex flex-col items-center">
-                <span className="text-[9px] text-gray-400 font-mono mb-0.5">Decimal Input</span>
-                <NumInput value={decInput} onChange={setDecInput} className="w-24" />
+                <span className="text-[10px] sm:text-xs text-gray-400 font-mono mb-1 font-semibold">Decimal Input</span>
+                <NumInput value={decInput} onChange={setDecInput} className="w-28 sm:w-36" />
               </div>
 
-              <ArrowRight className="w-4 h-4 text-[#FF9F0A]" />
+              <ArrowRight className="w-5 h-5 text-[#FF9F0A]" />
 
               {dec.frac ? (
-                <div className="flex flex-col items-center gap-0.5 px-2.5 py-0.5 bg-[#30D158]/10 rounded-lg border border-[#30D158]/30">
-                  <span className="font-mono text-sm font-bold text-[#30D158]">{dec.frac.numerator}</span>
+                <div className="flex flex-col items-center gap-1 px-4 py-1.5 bg-[#30D158]/10 rounded-xl border border-[#30D158]/30">
+                  <span className="font-mono text-base sm:text-lg font-bold text-[#30D158]">{dec.frac.numerator}</span>
                   <div className="w-full h-0.5 bg-[#30D158]" />
-                  <span className="font-mono text-sm font-bold text-[#30D158]">{dec.frac.denominator}</span>
+                  <span className="font-mono text-base sm:text-lg font-bold text-[#30D158]">{dec.frac.denominator}</span>
                 </div>
               ) : (
-                <span className="text-[#FF453A] text-[10px] font-mono">{dec.error}</span>
+                <span className="text-[#FF453A] text-xs font-mono">{dec.error}</span>
               )}
             </div>
 
             {dec.frac && (
-              <div className="grid grid-cols-2 gap-1.5 bg-black/40 p-1.5 rounded-xl border border-[#242424]">
-                <div className="flex flex-col items-center p-1.5 bg-[#242424]/60 rounded-lg border border-[#2C2C2E]">
-                  <span className="text-[9px] text-gray-400 font-medium">Fraction</span>
-                  <span className="font-mono text-xs font-bold text-[#30D158]">
+              <div className="grid grid-cols-2 gap-2 bg-black/40 p-2 sm:p-2.5 rounded-2xl border border-[#242424]">
+                <div className="flex flex-col items-center p-2 bg-[#242424]/60 rounded-xl border border-[#2C2C2E]">
+                  <span className="text-[10px] sm:text-xs text-gray-400 font-medium">Fraction</span>
+                  <span className="font-mono text-sm sm:text-base font-bold text-[#30D158]">
                     {dec.frac.numerator}/{dec.frac.denominator}
                   </span>
                 </div>
-                <div className="flex flex-col items-center p-1.5 bg-[#242424]/60 rounded-lg border border-[#2C2C2E]">
-                  <span className="text-[9px] text-gray-400 font-medium">Mixed Number</span>
-                  <span className="font-mono text-xs font-bold text-white">
+                <div className="flex flex-col items-center p-2 bg-[#242424]/60 rounded-xl border border-[#2C2C2E]">
+                  <span className="text-[10px] sm:text-xs text-gray-400 font-medium">Mixed Number</span>
+                  <span className="font-mono text-sm sm:text-base font-bold text-white">
                     {dec.mixed?.whole ? `${dec.mixed.whole} ${dec.mixed.numerator}/${dec.mixed.denominator}` : `${dec.frac.numerator}/${dec.frac.denominator}`}
                   </span>
                 </div>
@@ -632,7 +632,7 @@ export const FractionsModule: React.FC = () => {
         )}
 
         {/* Quick Send to Standard Calculator */}
-        <div className="flex items-center justify-end gap-2 pt-0.5 border-t border-[#2C2C2E]/60 text-xs">
+        <div className="flex items-center justify-end gap-2 pt-1 border-t border-[#2C2C2E]/60 text-xs sm:text-sm">
           <button
             type="button"
             onClick={() => {
@@ -643,9 +643,9 @@ export const FractionsModule: React.FC = () => {
                 : dec.frac ? `${dec.frac.numerator}/${dec.frac.denominator}` : '0';
               handleSendToCalc(val);
             }}
-            className="flex items-center gap-1 px-2.5 py-0.5 bg-[#242424] hover:bg-[#333333] text-gray-300 hover:text-white rounded-full transition-colors border border-[#333333] text-[10px]"
+            className="flex items-center gap-1.5 px-3 py-1 bg-[#242424] hover:bg-[#333333] text-gray-300 hover:text-white rounded-full transition-colors border border-[#333333] text-xs font-semibold shadow-sm"
           >
-            <Calculator className="w-3 h-3 text-[#FF9F0A]" />
+            <Calculator className="w-3.5 h-3.5 text-[#FF9F0A]" />
             <span>Use in Calc</span>
           </button>
         </div>

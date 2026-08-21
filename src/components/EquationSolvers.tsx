@@ -635,14 +635,14 @@ export const EquationSolvers: React.FC = () => {
   };
 
   return (
-    <div id="equation-solvers-module" className="w-full max-w-3xl mx-auto flex flex-col gap-2">
+    <div id="equation-solvers-module" className="w-full max-w-2xl md:max-w-4xl lg:max-w-5xl mx-auto flex flex-col gap-3 sm:gap-4 flex-1">
       {/* Category Tabs Header */}
-      <div className="flex items-center justify-between px-2 py-1 bg-[#1C1C1E] rounded-full border border-[#2C2C2E]">
-        <div className="flex items-center gap-1 overflow-x-auto scrollbar-none">
+      <div className="flex items-center justify-between px-3 py-2 bg-[#1C1C1E] rounded-2xl sm:rounded-full border border-[#2C2C2E] shadow-md">
+        <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-none">
           <button
             type="button"
             onClick={() => setActiveSolver('quadratic')}
-            className={`px-2.5 py-0.5 rounded-full text-[11px] font-semibold whitespace-nowrap transition-all ${
+            className={`px-3 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap transition-all ${
               activeSolver === 'quadratic'
                 ? 'bg-[#FF9F0A] text-white shadow-sm font-bold'
                 : 'text-gray-400 hover:text-white'
@@ -653,7 +653,7 @@ export const EquationSolvers: React.FC = () => {
           <button
             type="button"
             onClick={() => setActiveSolver('cubic')}
-            className={`px-2.5 py-0.5 rounded-full text-[11px] font-semibold whitespace-nowrap transition-all ${
+            className={`px-3 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap transition-all ${
               activeSolver === 'cubic'
                 ? 'bg-[#FF9F0A] text-white shadow-sm font-bold'
                 : 'text-gray-400 hover:text-white'
@@ -664,7 +664,7 @@ export const EquationSolvers: React.FC = () => {
           <button
             type="button"
             onClick={() => setActiveSolver('sim_lin_quad')}
-            className={`px-2.5 py-0.5 rounded-full text-[11px] font-semibold whitespace-nowrap transition-all ${
+            className={`px-3 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap transition-all ${
               activeSolver === 'sim_lin_quad'
                 ? 'bg-[#FF9F0A] text-white shadow-sm font-bold'
                 : 'text-gray-400 hover:text-white'
@@ -675,7 +675,7 @@ export const EquationSolvers: React.FC = () => {
           <button
             type="button"
             onClick={() => setActiveSolver('sim_lin_poly')}
-            className={`px-2.5 py-0.5 rounded-full text-[11px] font-semibold whitespace-nowrap transition-all ${
+            className={`px-3 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap transition-all ${
               activeSolver === 'sim_lin_poly'
                 ? 'bg-[#FF9F0A] text-white shadow-sm font-bold'
                 : 'text-gray-400 hover:text-white'
@@ -686,7 +686,7 @@ export const EquationSolvers: React.FC = () => {
           <button
             type="button"
             onClick={() => setActiveSolver('formulate_quad')}
-            className={`px-2.5 py-0.5 rounded-full text-[11px] font-semibold whitespace-nowrap transition-all ${
+            className={`px-3 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap transition-all ${
               activeSolver === 'formulate_quad'
                 ? 'bg-[#FF9F0A] text-white shadow-sm font-bold'
                 : 'text-gray-400 hover:text-white'
@@ -697,7 +697,7 @@ export const EquationSolvers: React.FC = () => {
           <button
             type="button"
             onClick={() => setActiveSolver('formulate_poly')}
-            className={`px-2.5 py-0.5 rounded-full text-[11px] font-semibold whitespace-nowrap transition-all ${
+            className={`px-3 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap transition-all ${
               activeSolver === 'formulate_poly'
                 ? 'bg-[#FF9F0A] text-white shadow-sm font-bold'
                 : 'text-gray-400 hover:text-white'
@@ -708,7 +708,7 @@ export const EquationSolvers: React.FC = () => {
           <button
             type="button"
             onClick={() => setActiveSolver('linear')}
-            className={`px-2.5 py-0.5 rounded-full text-[11px] font-semibold whitespace-nowrap transition-all ${
+            className={`px-3 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap transition-all ${
               activeSolver === 'linear'
                 ? 'bg-[#FF9F0A] text-white shadow-sm font-bold'
                 : 'text-gray-400 hover:text-white'
@@ -719,7 +719,7 @@ export const EquationSolvers: React.FC = () => {
           <button
             type="button"
             onClick={() => setActiveSolver('system')}
-            className={`px-2.5 py-0.5 rounded-full text-[11px] font-semibold whitespace-nowrap transition-all ${
+            className={`px-3 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap transition-all ${
               activeSolver === 'system'
                 ? 'bg-[#FF9F0A] text-white shadow-sm font-bold'
                 : 'text-gray-400 hover:text-white'
@@ -730,7 +730,7 @@ export const EquationSolvers: React.FC = () => {
           <button
             type="button"
             onClick={() => setActiveSolver('proportion')}
-            className={`px-2.5 py-0.5 rounded-full text-[11px] font-semibold whitespace-nowrap transition-all ${
+            className={`px-3 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap transition-all ${
               activeSolver === 'proportion'
                 ? 'bg-[#FF9F0A] text-white shadow-sm font-bold'
                 : 'text-gray-400 hover:text-white'
@@ -743,78 +743,78 @@ export const EquationSolvers: React.FC = () => {
         <button
           type="button"
           onClick={handleSaveHistory}
-          className="px-2 py-0.5 rounded-full bg-[#242424] hover:bg-[#333333] text-[10px] text-[#FF9F0A] border border-[#333333] transition-colors shrink-0 ml-1 font-bold"
+          className="px-3 py-1 sm:py-1.5 rounded-full bg-[#242424] hover:bg-[#333333] text-xs sm:text-sm text-[#FF9F0A] border border-[#333333] transition-colors shrink-0 ml-2 font-bold shadow-sm"
         >
           Save
         </button>
       </div>
 
       {/* Main Solver Card */}
-      <div className="bg-[#1C1C1E] p-2.5 sm:p-3 rounded-2xl border border-[#2C2C2E] shadow-xl flex flex-col gap-2.5">
+      <div className="bg-[#1C1C1E] p-3.5 sm:p-5 rounded-2xl sm:rounded-3xl border border-[#2C2C2E] shadow-xl flex flex-col gap-3.5 flex-1">
         
         {/* 1. QUADRATIC SOLVER */}
         {activeSolver === 'quadratic' && (
-          <div className="flex flex-col gap-2.5">
+          <div className="flex flex-col gap-3.5">
             {/* Interactive Equation Builder */}
-            <div className="flex items-center justify-center gap-1.5 p-2 bg-black rounded-xl border border-[#242424] overflow-x-auto scrollbar-none">
+            <div className="flex items-center justify-center gap-2 p-3 bg-black rounded-2xl border border-[#242424] overflow-x-auto scrollbar-none min-h-[90px]">
               <NumInput
                 value={quadA}
                 onChange={setQuadA}
                 placeholder="a"
-                className="w-14 sm:w-16"
+                className="w-16 sm:w-20 md:w-24"
               />
-              <span className="font-mono text-xs sm:text-sm font-medium text-white">x² +</span>
+              <span className="font-mono text-sm sm:text-base font-bold text-white">x² +</span>
               <NumInput
                 value={quadB}
                 onChange={setQuadB}
                 placeholder="b"
-                className="w-14 sm:w-16"
+                className="w-16 sm:w-20 md:w-24"
               />
-              <span className="font-mono text-xs sm:text-sm font-medium text-white">x +</span>
+              <span className="font-mono text-sm sm:text-base font-bold text-white">x +</span>
               <NumInput
                 value={quadC}
                 onChange={setQuadC}
                 placeholder="c"
-                className="w-14 sm:w-16"
+                className="w-16 sm:w-20 md:w-24"
               />
-              <span className="font-mono text-xs sm:text-sm font-medium text-white">= 0</span>
+              <span className="font-mono text-sm sm:text-base font-bold text-white">= 0</span>
             </div>
 
             {/* Results Grid */}
             {quadResult.sol ? (
-              <div className="flex flex-col gap-1.5">
-                <div className="grid grid-cols-2 gap-1.5">
-                  <div className="flex flex-col items-center justify-center p-2 bg-black/60 rounded-lg border border-[#2C2C2E]">
-                    <span className="text-[9px] text-gray-400 font-mono">Root x₁</span>
-                    <span className="font-mono text-sm sm:text-base font-bold text-[#30D158]">
+              <div className="flex flex-col gap-2">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  <div className="flex flex-col items-center justify-center p-3 bg-black/60 rounded-xl border border-[#2C2C2E]">
+                    <span className="text-[10px] sm:text-xs text-gray-400 font-mono font-medium">Root x₁</span>
+                    <span className="font-mono text-base sm:text-lg font-bold text-[#30D158]">
                       {quadResult.sol.roots.r1}
                     </span>
                   </div>
-                  <div className="flex flex-col items-center justify-center p-2 bg-black/60 rounded-lg border border-[#2C2C2E]">
-                    <span className="text-[9px] text-gray-400 font-mono">Root x₂</span>
-                    <span className="font-mono text-sm sm:text-base font-bold text-[#30D158]">
+                  <div className="flex flex-col items-center justify-center p-3 bg-black/60 rounded-xl border border-[#2C2C2E]">
+                    <span className="text-[10px] sm:text-xs text-gray-400 font-mono font-medium">Root x₂</span>
+                    <span className="font-mono text-base sm:text-lg font-bold text-[#30D158]">
                       {quadResult.sol.roots.r2}
                     </span>
                   </div>
                 </div>
 
-                <div className="grid grid-cols-3 gap-1.5 bg-black/30 p-1.5 rounded-lg border border-[#242424] text-[11px] font-mono text-center">
+                <div className="grid grid-cols-3 gap-2 bg-black/30 p-2.5 rounded-xl border border-[#242424] text-xs font-mono text-center">
                   <div>
-                    <span className="text-gray-500 block text-[8px]">Discriminant (Δ)</span>
-                    <span className="font-bold text-white text-xs">{quadResult.sol.discriminant}</span>
+                    <span className="text-gray-400 block text-[10px]">Discriminant (Δ)</span>
+                    <span className="font-bold text-white text-sm sm:text-base">{quadResult.sol.discriminant}</span>
                   </div>
                   <div>
-                    <span className="text-gray-500 block text-[8px]">Vertex (h, k)</span>
-                    <span className="font-bold text-white text-xs">({formatResult(quadResult.sol.vertex.h, 2)}, {formatResult(quadResult.sol.vertex.k, 2)})</span>
+                    <span className="text-gray-400 block text-[10px]">Vertex (h, k)</span>
+                    <span className="font-bold text-white text-xs sm:text-sm">({formatResult(quadResult.sol.vertex.h, 2)}, {formatResult(quadResult.sol.vertex.k, 2)})</span>
                   </div>
                   <div>
-                    <span className="text-gray-500 block text-[8px]">Nature</span>
-                    <span className="font-bold text-[#FF9F0A] uppercase text-[10px]">{quadResult.sol.rootType.replace('_', ' ')}</span>
+                    <span className="text-gray-400 block text-[10px]">Nature</span>
+                    <span className="font-bold text-[#FF9F0A] uppercase text-xs">{quadResult.sol.rootType.replace('_', ' ')}</span>
                   </div>
                 </div>
               </div>
             ) : (
-              <div className="p-2.5 bg-black/40 rounded-lg text-center text-[11px] text-[#FF453A] font-mono">
+              <div className="p-3 bg-black/40 rounded-xl text-center text-xs text-[#FF453A] font-mono">
                 {quadResult.error}
               </div>
             )}
@@ -823,70 +823,70 @@ export const EquationSolvers: React.FC = () => {
 
         {/* 2. CUBIC SOLVER */}
         {activeSolver === 'cubic' && (
-          <div className="flex flex-col gap-2.5">
-            <div className="flex items-center justify-center gap-1.5 p-2 bg-black rounded-xl border border-[#242424] overflow-x-auto scrollbar-none">
+          <div className="flex flex-col gap-3.5">
+            <div className="flex items-center justify-center gap-1.5 sm:gap-2 p-3 bg-black rounded-2xl border border-[#242424] overflow-x-auto scrollbar-none min-h-[90px]">
               <NumInput
                 value={cubicA}
                 onChange={setCubicA}
                 placeholder="a"
-                className="w-12 sm:w-14"
+                className="w-14 sm:w-18 md:w-22"
               />
-              <span className="font-mono text-xs font-medium text-white">x³ +</span>
+              <span className="font-mono text-xs sm:text-sm font-bold text-white">x³ +</span>
               <NumInput
                 value={cubicB}
                 onChange={setCubicB}
                 placeholder="b"
-                className="w-12 sm:w-14"
+                className="w-14 sm:w-18 md:w-22"
               />
-              <span className="font-mono text-xs font-medium text-white">x² +</span>
+              <span className="font-mono text-xs sm:text-sm font-bold text-white">x² +</span>
               <NumInput
                 value={cubicC}
                 onChange={setCubicC}
                 placeholder="c"
-                className="w-12 sm:w-14"
+                className="w-14 sm:w-18 md:w-22"
               />
-              <span className="font-mono text-xs font-medium text-white">x +</span>
+              <span className="font-mono text-xs sm:text-sm font-bold text-white">x +</span>
               <NumInput
                 value={cubicD}
                 onChange={setCubicD}
                 placeholder="d"
-                className="w-12 sm:w-14"
+                className="w-14 sm:w-18 md:w-22"
               />
-              <span className="font-mono text-xs font-medium text-white">= 0</span>
+              <span className="font-mono text-xs sm:text-sm font-bold text-white">= 0</span>
             </div>
 
             {cubicResult.sol ? (
-              <div className="flex flex-col gap-1.5">
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-1.5">
-                  <div className="flex flex-col items-center justify-center p-2 bg-black/60 rounded-lg border border-[#2C2C2E]">
-                    <span className="text-[9px] text-gray-400 font-mono">Root x₁</span>
+              <div className="flex flex-col gap-2">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                  <div className="flex flex-col items-center justify-center p-2.5 sm:p-3 bg-black/60 rounded-xl border border-[#2C2C2E]">
+                    <span className="text-[10px] sm:text-xs text-gray-400 font-mono">Root x₁</span>
                     <span className="font-mono text-xs sm:text-sm font-bold text-[#30D158] truncate max-w-full">
                       {cubicResult.sol.roots.r1}
                     </span>
                   </div>
-                  <div className="flex flex-col items-center justify-center p-2 bg-black/60 rounded-lg border border-[#2C2C2E]">
-                    <span className="text-[9px] text-gray-400 font-mono">Root x₂</span>
+                  <div className="flex flex-col items-center justify-center p-2.5 sm:p-3 bg-black/60 rounded-xl border border-[#2C2C2E]">
+                    <span className="text-[10px] sm:text-xs text-gray-400 font-mono">Root x₂</span>
                     <span className="font-mono text-xs sm:text-sm font-bold text-[#30D158] truncate max-w-full">
                       {cubicResult.sol.roots.r2}
                     </span>
                   </div>
-                  <div className="flex flex-col items-center justify-center p-2 bg-black/60 rounded-lg border border-[#2C2C2E]">
-                    <span className="text-[9px] text-gray-400 font-mono">Root x₃</span>
+                  <div className="flex flex-col items-center justify-center p-2.5 sm:p-3 bg-black/60 rounded-xl border border-[#2C2C2E]">
+                    <span className="text-[10px] sm:text-xs text-gray-400 font-mono">Root x₃</span>
                     <span className="font-mono text-xs sm:text-sm font-bold text-[#30D158] truncate max-w-full">
                       {cubicResult.sol.roots.r3}
                     </span>
                   </div>
                 </div>
 
-                <div className="flex items-center justify-between px-2.5 py-1.5 bg-black/30 rounded-lg border border-[#242424] text-[11px] font-mono">
-                  <span className="text-gray-400 text-[10px]">Cardano Δ: <strong className="text-white">{formatResult(cubicResult.sol.discriminantDelta, 4)}</strong></span>
-                  <span className="text-[#FF9F0A] uppercase text-[9px] font-bold">
+                <div className="flex items-center justify-between px-3 py-2 bg-black/30 rounded-xl border border-[#242424] text-xs font-mono">
+                  <span className="text-gray-400 text-xs">Cardano Δ: <strong className="text-white">{formatResult(cubicResult.sol.discriminantDelta, 4)}</strong></span>
+                  <span className="text-[#FF9F0A] uppercase text-xs font-bold">
                     {cubicResult.sol.nature.replace(/_/g, ' ')}
                   </span>
                 </div>
               </div>
             ) : (
-              <div className="p-2.5 bg-black/40 rounded-lg text-center text-[11px] text-[#FF453A] font-mono">
+              <div className="p-3 bg-black/40 rounded-xl text-center text-xs text-[#FF453A] font-mono">
                 {cubicResult.error}
               </div>
             )}
@@ -895,57 +895,57 @@ export const EquationSolvers: React.FC = () => {
 
         {/* 3. SIMULTANEOUS LINEAR & QUADRATIC */}
         {activeSolver === 'sim_lin_quad' && (
-          <div className="flex flex-col gap-2.5">
-            <div className="p-2.5 bg-black rounded-xl border border-[#242424] flex flex-col gap-2">
+          <div className="flex flex-col gap-3.5">
+            <div className="p-3 bg-black rounded-2xl border border-[#242424] flex flex-col gap-2.5">
               {/* Line */}
-              <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-none">
-                <span className="text-[11px] font-mono text-[#FF9F0A] font-bold w-10 shrink-0">Line:</span>
-                <span className="font-mono text-xs text-white">y =</span>
-                <NumInput value={simM} onChange={setSimM} placeholder="m" className="w-14" />
-                <span className="font-mono text-xs text-white">x +</span>
-                <NumInput value={simK} onChange={setSimK} placeholder="k" className="w-14" />
+              <div className="flex items-center gap-2 overflow-x-auto scrollbar-none">
+                <span className="text-xs sm:text-sm font-mono text-[#FF9F0A] font-bold w-12 shrink-0">Line:</span>
+                <span className="font-mono text-xs sm:text-sm text-white">y =</span>
+                <NumInput value={simM} onChange={setSimM} placeholder="m" className="w-16 sm:w-20" />
+                <span className="font-mono text-xs sm:text-sm text-white">x +</span>
+                <NumInput value={simK} onChange={setSimK} placeholder="k" className="w-16 sm:w-20" />
               </div>
 
               {/* Parabola */}
-              <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-none">
-                <span className="text-[11px] font-mono text-[#30D158] font-bold w-10 shrink-0">Quad:</span>
-                <span className="font-mono text-xs text-white">y =</span>
-                <NumInput value={simQA} onChange={setSimQA} placeholder="a" className="w-12" />
-                <span className="font-mono text-xs text-white">x² +</span>
-                <NumInput value={simQB} onChange={setSimQB} placeholder="b" className="w-12" />
-                <span className="font-mono text-xs text-white">x +</span>
-                <NumInput value={simQC} onChange={setSimQC} placeholder="c" className="w-12" />
+              <div className="flex items-center gap-2 overflow-x-auto scrollbar-none">
+                <span className="text-xs sm:text-sm font-mono text-[#30D158] font-bold w-12 shrink-0">Quad:</span>
+                <span className="font-mono text-xs sm:text-sm text-white">y =</span>
+                <NumInput value={simQA} onChange={setSimQA} placeholder="a" className="w-14 sm:w-18" />
+                <span className="font-mono text-xs sm:text-sm text-white">x² +</span>
+                <NumInput value={simQB} onChange={setSimQB} placeholder="b" className="w-14 sm:w-18" />
+                <span className="font-mono text-xs sm:text-sm text-white">x +</span>
+                <NumInput value={simQC} onChange={setSimQC} placeholder="c" className="w-14 sm:w-18" />
               </div>
             </div>
 
             {simLinQuadResult.sol ? (
-              <div className="flex flex-col gap-1.5">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
+              <div className="flex flex-col gap-2">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                   {simLinQuadResult.sol.intersections.length > 0 ? (
                     simLinQuadResult.sol.intersections.map((pt, idx) => (
-                      <div key={idx} className="flex flex-col items-center justify-center p-2 bg-black/60 rounded-lg border border-[#2C2C2E]">
-                        <span className="text-[9px] text-gray-400 font-mono">Intersection Point {idx + 1}</span>
-                        <span className="font-mono text-xs sm:text-sm font-bold text-[#30D158]">
+                      <div key={idx} className="flex flex-col items-center justify-center p-3 bg-black/60 rounded-xl border border-[#2C2C2E]">
+                        <span className="text-[10px] sm:text-xs text-gray-400 font-mono font-medium">Intersection Point {idx + 1}</span>
+                        <span className="font-mono text-sm sm:text-base font-bold text-[#30D158]">
                           ({pt.formattedX}, {pt.formattedY})
                         </span>
                       </div>
                     ))
                   ) : (
-                    <div className="col-span-2 p-2.5 bg-black/60 rounded-lg border border-[#2C2C2E] text-center font-mono text-xs text-gray-400">
+                    <div className="col-span-2 p-3 bg-black/60 rounded-xl border border-[#2C2C2E] text-center font-mono text-xs sm:text-sm text-gray-400">
                       No real intersection points (Line and parabola do not cross)
                     </div>
                   )}
                 </div>
 
-                <div className="flex items-center justify-between px-2.5 py-1.5 bg-black/30 rounded-lg border border-[#242424] text-[11px] font-mono">
-                  <span className="text-gray-400 text-[10px]">Combined Δ: <strong className="text-white">{simLinQuadResult.sol.discriminant}</strong></span>
-                  <span className="text-[#FF9F0A] uppercase text-[9px] font-bold">
+                <div className="flex items-center justify-between px-3 py-2 bg-black/30 rounded-xl border border-[#242424] text-xs font-mono">
+                  <span className="text-gray-400 text-xs">Combined Δ: <strong className="text-white">{simLinQuadResult.sol.discriminant}</strong></span>
+                  <span className="text-[#FF9F0A] uppercase text-xs font-bold">
                     {simLinQuadResult.sol.type.replace(/_/g, ' ')}
                   </span>
                 </div>
               </div>
             ) : (
-              <div className="p-2.5 bg-black/40 rounded-lg text-center text-[11px] text-[#FF453A] font-mono">
+              <div className="p-3 bg-black/40 rounded-xl text-center text-xs text-[#FF453A] font-mono">
                 {simLinQuadResult.error}
               </div>
             )}
@@ -954,28 +954,28 @@ export const EquationSolvers: React.FC = () => {
 
         {/* 4. SIMULTANEOUS LINEAR & POLYNOMIAL */}
         {activeSolver === 'sim_lin_poly' && (
-          <div className="flex flex-col gap-2.5">
-            <div className="p-2.5 bg-black rounded-xl border border-[#242424] flex flex-col gap-2">
+          <div className="flex flex-col gap-3.5">
+            <div className="p-3 bg-black rounded-2xl border border-[#242424] flex flex-col gap-2.5">
               {/* Line */}
-              <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-none">
-                <span className="text-[11px] font-mono text-[#FF9F0A] font-bold w-10 shrink-0">Line:</span>
-                <span className="font-mono text-xs text-white">y =</span>
-                <NumInput value={simPolyM} onChange={setSimPolyM} placeholder="m" className="w-14" />
-                <span className="font-mono text-xs text-white">x +</span>
-                <NumInput value={simPolyK} onChange={setSimPolyK} placeholder="k" className="w-14" />
+              <div className="flex items-center gap-2 overflow-x-auto scrollbar-none">
+                <span className="text-xs sm:text-sm font-mono text-[#FF9F0A] font-bold w-12 shrink-0">Line:</span>
+                <span className="font-mono text-xs sm:text-sm text-white">y =</span>
+                <NumInput value={simPolyM} onChange={setSimPolyM} placeholder="m" className="w-16 sm:w-20" />
+                <span className="font-mono text-xs sm:text-sm text-white">x +</span>
+                <NumInput value={simPolyK} onChange={setSimPolyK} placeholder="k" className="w-16 sm:w-20" />
               </div>
 
               {/* Polynomial degree selector & coefficients */}
-              <div className="flex items-center gap-1.5 pt-1 border-t border-[#242424]">
-                <span className="text-[11px] font-mono text-[#30D158] font-bold w-10 shrink-0">Degree:</span>
-                <div className="flex items-center gap-1">
+              <div className="flex items-center gap-2 pt-2 border-t border-[#242424]">
+                <span className="text-xs sm:text-sm font-mono text-[#30D158] font-bold w-16 shrink-0">Degree:</span>
+                <div className="flex items-center gap-1.5">
                   {[2, 3, 4, 5].map((d) => (
                     <button
                       key={d}
                       type="button"
                       onClick={() => handlePolyDegreeChange(d)}
-                      className={`px-2 py-0.5 rounded text-[10px] font-mono font-bold transition-all ${
-                        polyDegree === d ? 'bg-[#30D158] text-black' : 'bg-[#242424] text-gray-400 hover:text-white'
+                      className={`px-3 py-1 rounded-lg text-xs font-mono font-bold transition-all ${
+                        polyDegree === d ? 'bg-[#30D158] text-black shadow-sm' : 'bg-[#242424] text-gray-400 hover:text-white'
                       }`}
                     >
                       Degree {d}
@@ -985,8 +985,8 @@ export const EquationSolvers: React.FC = () => {
               </div>
 
               {/* Poly equation input row */}
-              <div className="flex items-center gap-1 overflow-x-auto scrollbar-none p-1 bg-[#1C1C1E] rounded-lg">
-                <span className="font-mono text-[11px] text-white shrink-0">y =</span>
+              <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-none p-2 bg-[#1C1C1E] rounded-xl">
+                <span className="font-mono text-xs sm:text-sm text-white shrink-0 font-bold">y =</span>
                 {polyCoeffs.map((cVal, idx) => {
                   const pwr = polyDegree - idx;
                   return (
@@ -999,9 +999,9 @@ export const EquationSolvers: React.FC = () => {
                           setPolyCoeffs(next);
                         }}
                         placeholder={`c${pwr}`}
-                        className="w-12 sm:w-14"
+                        className="w-14 sm:w-18"
                       />
-                      <span className="font-mono text-[11px] text-gray-300">
+                      <span className="font-mono text-xs sm:text-sm text-gray-300 font-semibold">
                         {pwr === 0 ? '' : pwr === 1 ? 'x +' : `x${pwr === 2 ? '²' : pwr === 3 ? '³' : pwr === 4 ? '⁴' : '⁵'} +`}
                       </span>
                     </div>
@@ -1011,29 +1011,29 @@ export const EquationSolvers: React.FC = () => {
             </div>
 
             {simLinPolyResult.sol ? (
-              <div className="flex flex-col gap-1.5">
-                <span className="text-[9px] text-gray-400 font-mono">
+              <div className="flex flex-col gap-2">
+                <span className="text-xs text-gray-400 font-mono">
                   Intersection Points ({simLinPolyResult.sol.intersections.length} Real Roots Found):
                 </span>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                   {simLinPolyResult.sol.intersections.length > 0 ? (
                     simLinPolyResult.sol.intersections.map((pt, idx) => (
-                      <div key={idx} className="flex flex-col items-center justify-center p-2 bg-black/60 rounded-lg border border-[#2C2C2E]">
-                        <span className="text-[9px] text-gray-400 font-mono">Point {idx + 1}</span>
-                        <span className="font-mono text-xs sm:text-sm font-bold text-[#30D158]">
+                      <div key={idx} className="flex flex-col items-center justify-center p-3 bg-black/60 rounded-xl border border-[#2C2C2E]">
+                        <span className="text-[10px] sm:text-xs text-gray-400 font-mono font-medium">Point {idx + 1}</span>
+                        <span className="font-mono text-sm sm:text-base font-bold text-[#30D158]">
                           ({pt.formattedX}, {pt.formattedY})
                         </span>
                       </div>
                     ))
                   ) : (
-                    <div className="col-span-2 p-2.5 bg-black/60 rounded-lg border border-[#2C2C2E] text-center font-mono text-xs text-gray-400">
+                    <div className="col-span-2 p-3 bg-black/60 rounded-xl border border-[#2C2C2E] text-center font-mono text-xs sm:text-sm text-gray-400">
                       No real intersection points in evaluated span
                     </div>
                   )}
                 </div>
               </div>
             ) : (
-              <div className="p-2.5 bg-black/40 rounded-lg text-center text-[11px] text-[#FF453A] font-mono">
+              <div className="p-3 bg-black/40 rounded-xl text-center text-xs text-[#FF453A] font-mono">
                 {simLinPolyResult.error}
               </div>
             )}
@@ -1042,50 +1042,50 @@ export const EquationSolvers: React.FC = () => {
 
         {/* 5. FORMULATE QUADRATIC FROM ROOTS */}
         {activeSolver === 'formulate_quad' && (
-          <div className="flex flex-col gap-2.5">
-            <div className="p-2.5 bg-black rounded-xl border border-[#242424] flex flex-col gap-2">
-              <span className="text-[11px] font-mono text-[#FF9F0A] font-bold">Input Roots to Formulate ax² + bx + c = 0:</span>
-              <div className="flex items-center justify-center gap-2 flex-wrap">
-                <div className="flex items-center gap-1">
-                  <span className="font-mono text-[11px] text-gray-400">Root 1 (r₁):</span>
-                  <NumInput value={formR1} onChange={setFormR1} placeholder="r1" className="w-14" />
+          <div className="flex flex-col gap-3.5">
+            <div className="p-3 bg-black rounded-2xl border border-[#242424] flex flex-col gap-2.5">
+              <span className="text-xs sm:text-sm font-mono text-[#FF9F0A] font-bold">Input Roots to Formulate ax² + bx + c = 0:</span>
+              <div className="flex items-center justify-center gap-3 flex-wrap">
+                <div className="flex items-center gap-1.5">
+                  <span className="font-mono text-xs sm:text-sm text-gray-400">Root 1 (r₁):</span>
+                  <NumInput value={formR1} onChange={setFormR1} placeholder="r1" className="w-16 sm:w-20" />
                 </div>
-                <div className="flex items-center gap-1">
-                  <span className="font-mono text-[11px] text-gray-400">Root 2 (r₂):</span>
-                  <NumInput value={formR2} onChange={setFormR2} placeholder="r2" className="w-14" />
+                <div className="flex items-center gap-1.5">
+                  <span className="font-mono text-xs sm:text-sm text-gray-400">Root 2 (r₂):</span>
+                  <NumInput value={formR2} onChange={setFormR2} placeholder="r2" className="w-16 sm:w-20" />
                 </div>
-                <div className="flex items-center gap-1">
-                  <span className="font-mono text-[11px] text-gray-400">Scale (a):</span>
-                  <NumInput value={formScaleA} onChange={setFormScaleA} placeholder="1" className="w-12" />
+                <div className="flex items-center gap-1.5">
+                  <span className="font-mono text-xs sm:text-sm text-gray-400">Scale (a):</span>
+                  <NumInput value={formScaleA} onChange={setFormScaleA} placeholder="1" className="w-14 sm:w-18" />
                 </div>
               </div>
             </div>
 
             {formQuadResult.sol ? (
-              <div className="flex flex-col gap-1.5">
-                <div className="p-2.5 bg-black/60 rounded-xl border border-[#2C2C2E] flex flex-col items-center justify-center gap-0.5 text-center">
-                  <span className="text-[9px] text-gray-400 font-mono uppercase">Expanded Form</span>
-                  <span className="font-mono text-sm sm:text-base font-bold text-[#30D158]">
+              <div className="flex flex-col gap-2">
+                <div className="p-3 bg-black/60 rounded-2xl border border-[#2C2C2E] flex flex-col items-center justify-center gap-1 text-center">
+                  <span className="text-[10px] sm:text-xs text-gray-400 font-mono uppercase">Expanded Form</span>
+                  <span className="font-mono text-base sm:text-lg font-bold text-[#30D158]">
                     {formQuadResult.sol.equationString}
                   </span>
-                  <span className="text-[11px] font-mono text-gray-400 mt-0.5">
+                  <span className="text-xs sm:text-sm font-mono text-gray-300 mt-1">
                     Factored: <strong className="text-white">{formQuadResult.sol.factoredString}</strong>
                   </span>
                 </div>
 
-                <div className="grid grid-cols-2 gap-1.5 text-[11px] font-mono">
-                  <div className="p-1.5 bg-black/30 rounded-lg border border-[#242424] text-center">
-                    <span className="text-gray-500 block text-[8px]">Sum of Roots (r₁+r₂)</span>
-                    <span className="font-bold text-white">{formatResult(formQuadResult.sol.sumOfRoots)}</span>
+                <div className="grid grid-cols-2 gap-2 text-xs font-mono">
+                  <div className="p-2.5 bg-black/30 rounded-xl border border-[#242424] text-center">
+                    <span className="text-gray-400 block text-[10px]">Sum of Roots (r₁+r₂)</span>
+                    <span className="font-bold text-white text-sm">{formatResult(formQuadResult.sol.sumOfRoots)}</span>
                   </div>
-                  <div className="p-1.5 bg-black/30 rounded-lg border border-[#242424] text-center">
-                    <span className="text-gray-500 block text-[8px]">Product of Roots (r₁×r₂)</span>
-                    <span className="font-bold text-white">{formatResult(formQuadResult.sol.productOfRoots)}</span>
+                  <div className="p-2.5 bg-black/30 rounded-xl border border-[#242424] text-center">
+                    <span className="text-gray-400 block text-[10px]">Product of Roots (r₁×r₂)</span>
+                    <span className="font-bold text-white text-sm">{formatResult(formQuadResult.sol.productOfRoots)}</span>
                   </div>
                 </div>
               </div>
             ) : (
-              <div className="p-2.5 bg-black/40 rounded-lg text-center text-[11px] text-[#FF453A] font-mono">
+              <div className="p-3 bg-black/40 rounded-xl text-center text-xs text-[#FF453A] font-mono">
                 {formQuadResult.error}
               </div>
             )}
@@ -1094,39 +1094,39 @@ export const EquationSolvers: React.FC = () => {
 
         {/* 6. FORMULATE GENERAL POLYNOMIAL FROM ROOTS */}
         {activeSolver === 'formulate_poly' && (
-          <div className="flex flex-col gap-2.5">
-            <div className="p-2.5 bg-black rounded-xl border border-[#242424] flex flex-col gap-2">
+          <div className="flex flex-col gap-3.5">
+            <div className="p-3 bg-black rounded-2xl border border-[#242424] flex flex-col gap-2.5">
               <div className="flex items-center justify-between">
-                <span className="text-[11px] font-mono text-[#FF9F0A] font-bold">List of Roots:</span>
-                <div className="flex items-center gap-1">
-                  <span className="text-[10px] font-mono text-gray-400">Scale (a):</span>
-                  <NumInput value={polyScaleA} onChange={setPolyScaleA} placeholder="1" className="w-12" />
+                <span className="text-xs sm:text-sm font-mono text-[#FF9F0A] font-bold">List of Roots:</span>
+                <div className="flex items-center gap-1.5">
+                  <span className="text-xs font-mono text-gray-400">Scale (a):</span>
+                  <NumInput value={polyScaleA} onChange={setPolyScaleA} placeholder="1" className="w-14 sm:w-18" />
                 </div>
               </div>
 
               {/* Roots Pill Chips */}
-              <div className="flex items-center gap-1 flex-wrap">
+              <div className="flex items-center gap-1.5 flex-wrap">
                 {polyRootsList.map((r, idx) => (
-                  <div key={idx} className="flex items-center gap-1 px-2 py-0.5 bg-[#242424] rounded-md border border-[#333333]">
-                    <span className="text-[11px] font-mono font-bold text-white">r_{idx + 1} = {r}</span>
+                  <div key={idx} className="flex items-center gap-1.5 px-3 py-1 bg-[#242424] rounded-lg border border-[#333333]">
+                    <span className="text-xs sm:text-sm font-mono font-bold text-white">r_{idx + 1} = {r}</span>
                     <button
                       type="button"
                       onClick={() => setPolyRootsList(polyRootsList.filter((_, i) => i !== idx))}
-                      className="text-gray-400 hover:text-[#FF453A] ml-0.5"
+                      className="text-gray-400 hover:text-[#FF453A] ml-1 p-0.5"
                     >
-                      <Trash2 className="w-2.5 h-2.5" />
+                      <Trash2 className="w-3.5 h-3.5" />
                     </button>
                   </div>
                 ))}
               </div>
 
               {/* Add New Root Input */}
-              <div className="flex items-center gap-1.5 pt-1.5 border-t border-[#242424]">
+              <div className="flex items-center gap-2 pt-2 border-t border-[#242424]">
                 <NumInput
                   value={newRootInput}
                   onChange={setNewRootInput}
                   placeholder="Enter root (e.g. -4)"
-                  className="w-32"
+                  className="w-36 sm:w-48"
                 />
                 <button
                   type="button"
@@ -1136,28 +1136,28 @@ export const EquationSolvers: React.FC = () => {
                       setNewRootInput('');
                     }
                   }}
-                  className="flex items-center gap-1 px-2.5 py-1 rounded-md bg-[#FF9F0A] text-white font-mono text-[10px] font-bold hover:bg-[#FFB340] transition-colors"
+                  className="flex items-center gap-1.5 px-3.5 py-1.5 sm:py-2 rounded-lg bg-[#FF9F0A] text-white font-mono text-xs sm:text-sm font-bold hover:bg-[#FFB340] transition-colors shadow-sm"
                 >
-                  <Plus className="w-3 h-3" />
+                  <Plus className="w-4 h-4" />
                   <span>Add Root</span>
                 </button>
               </div>
             </div>
 
             {formPolyResult.sol ? (
-              <div className="flex flex-col gap-1.5">
-                <div className="p-2.5 bg-black/60 rounded-xl border border-[#2C2C2E] flex flex-col items-center justify-center gap-0.5 text-center">
-                  <span className="text-[9px] text-gray-400 font-mono uppercase">Formulated Degree {formPolyResult.sol.degree} Polynomial</span>
+              <div className="flex flex-col gap-2">
+                <div className="p-3 bg-black/60 rounded-2xl border border-[#2C2C2E] flex flex-col items-center justify-center gap-1 text-center">
+                  <span className="text-[10px] sm:text-xs text-gray-400 font-mono uppercase">Formulated Degree {formPolyResult.sol.degree} Polynomial</span>
                   <span className="font-mono text-sm sm:text-base font-bold text-[#30D158] break-all">
                     {formPolyResult.sol.equationString}
                   </span>
-                  <span className="text-[11px] font-mono text-gray-400 mt-0.5 break-all">
+                  <span className="text-xs sm:text-sm font-mono text-gray-300 mt-1 break-all">
                     Factored: <strong className="text-white">{formPolyResult.sol.factoredString}</strong>
                   </span>
                 </div>
               </div>
             ) : (
-              <div className="p-2.5 bg-black/40 rounded-lg text-center text-[11px] text-[#FF453A] font-mono">
+              <div className="p-3 bg-black/40 rounded-xl text-center text-xs text-[#FF453A] font-mono">
                 {formPolyResult.error}
               </div>
             )}
@@ -1166,32 +1166,32 @@ export const EquationSolvers: React.FC = () => {
 
         {/* 7. LINEAR SOLVER */}
         {activeSolver === 'linear' && (
-          <div className="flex flex-col gap-2.5">
-            <div className="flex items-center justify-center gap-1.5 p-2 bg-black rounded-xl border border-[#242424]">
-              <NumInput value={linA} onChange={setLinA} placeholder="a" className="w-14" />
-              <span className="font-mono text-xs sm:text-sm font-medium text-white">x +</span>
-              <NumInput value={linB} onChange={setLinB} placeholder="b" className="w-14" />
-              <span className="font-mono text-xs sm:text-sm font-medium text-white">=</span>
-              <NumInput value={linC} onChange={setLinC} placeholder="c" className="w-14" />
+          <div className="flex flex-col gap-3.5">
+            <div className="flex items-center justify-center gap-2 p-3 bg-black rounded-2xl border border-[#242424] min-h-[90px]">
+              <NumInput value={linA} onChange={setLinA} placeholder="a" className="w-16 sm:w-20 md:w-24" />
+              <span className="font-mono text-sm sm:text-base font-bold text-white">x +</span>
+              <NumInput value={linB} onChange={setLinB} placeholder="b" className="w-16 sm:w-20 md:w-24" />
+              <span className="font-mono text-sm sm:text-base font-bold text-white">=</span>
+              <NumInput value={linC} onChange={setLinC} placeholder="c" className="w-16 sm:w-20 md:w-24" />
             </div>
 
             {linearResult.sol ? (
-              <div className="grid grid-cols-2 gap-1.5">
-                <div className="flex flex-col items-center justify-center p-2 bg-black/60 rounded-lg border border-[#2C2C2E]">
-                  <span className="text-[9px] text-gray-400 font-mono">Solution x</span>
-                  <span className="font-mono text-sm sm:text-base font-bold text-[#30D158]">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                <div className="flex flex-col items-center justify-center p-3 bg-black/60 rounded-xl border border-[#2C2C2E]">
+                  <span className="text-[10px] sm:text-xs text-gray-400 font-mono font-medium">Solution x</span>
+                  <span className="font-mono text-base sm:text-lg font-bold text-[#30D158]">
                     {linearResult.sol.formattedX}
                   </span>
                 </div>
-                <div className="flex flex-col items-center justify-center p-2 bg-black/60 rounded-lg border border-[#2C2C2E]">
-                  <span className="text-[9px] text-gray-400 font-mono">Decimal</span>
-                  <span className="font-mono text-sm sm:text-base font-bold text-white">
+                <div className="flex flex-col items-center justify-center p-3 bg-black/60 rounded-xl border border-[#2C2C2E]">
+                  <span className="text-[10px] sm:text-xs text-gray-400 font-mono font-medium">Decimal</span>
+                  <span className="font-mono text-base sm:text-lg font-bold text-white">
                     {formatResult(linearResult.sol.solution)}
                   </span>
                 </div>
               </div>
             ) : (
-              <div className="p-2.5 bg-black/40 rounded-lg text-center text-[11px] text-[#FF453A] font-mono">
+              <div className="p-3 bg-black/40 rounded-xl text-center text-xs text-[#FF453A] font-mono">
                 {linearResult.error}
               </div>
             )}
@@ -1200,44 +1200,44 @@ export const EquationSolvers: React.FC = () => {
 
         {/* 8. SYSTEM 2X2 SOLVER */}
         {activeSolver === 'system' && (
-          <div className="flex flex-col gap-2.5">
-            <div className="flex flex-col gap-1.5 p-2 bg-black rounded-xl border border-[#242424]">
+          <div className="flex flex-col gap-3.5">
+            <div className="flex flex-col gap-2 p-3 bg-black rounded-2xl border border-[#242424]">
               {/* Row 1 */}
-              <div className="flex items-center justify-center gap-1.5">
-                <NumInput value={sysA1} onChange={setSysA1} className="w-12" />
-                <span className="font-mono text-xs text-white">x +</span>
-                <NumInput value={sysB1} onChange={setSysB1} className="w-12" />
-                <span className="font-mono text-xs text-white">y =</span>
-                <NumInput value={sysC1} onChange={setSysC1} className="w-12" />
+              <div className="flex items-center justify-center gap-2">
+                <NumInput value={sysA1} onChange={setSysA1} className="w-14 sm:w-18 md:w-22" />
+                <span className="font-mono text-xs sm:text-sm font-bold text-white">x +</span>
+                <NumInput value={sysB1} onChange={setSysB1} className="w-14 sm:w-18 md:w-22" />
+                <span className="font-mono text-xs sm:text-sm font-bold text-white">y =</span>
+                <NumInput value={sysC1} onChange={setSysC1} className="w-14 sm:w-18 md:w-22" />
               </div>
 
               {/* Row 2 */}
-              <div className="flex items-center justify-center gap-1.5">
-                <NumInput value={sysA2} onChange={setSysA2} className="w-12" />
-                <span className="font-mono text-xs text-white">x +</span>
-                <NumInput value={sysB2} onChange={setSysB2} className="w-12" />
-                <span className="font-mono text-xs text-white">y =</span>
-                <NumInput value={sysC2} onChange={setSysC2} className="w-12" />
+              <div className="flex items-center justify-center gap-2">
+                <NumInput value={sysA2} onChange={setSysA2} className="w-14 sm:w-18 md:w-22" />
+                <span className="font-mono text-xs sm:text-sm font-bold text-white">x +</span>
+                <NumInput value={sysB2} onChange={setSysB2} className="w-14 sm:w-18 md:w-22" />
+                <span className="font-mono text-xs sm:text-sm font-bold text-white">y =</span>
+                <NumInput value={sysC2} onChange={setSysC2} className="w-14 sm:w-18 md:w-22" />
               </div>
             </div>
 
             {sysResult.sol ? (
-              <div className="grid grid-cols-2 gap-1.5">
-                <div className="flex flex-col items-center justify-center p-2 bg-black/60 rounded-lg border border-[#2C2C2E]">
-                  <span className="text-[9px] text-gray-400 font-mono">Solution x</span>
-                  <span className="font-mono text-sm sm:text-base font-bold text-[#30D158]">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                <div className="flex flex-col items-center justify-center p-3 bg-black/60 rounded-xl border border-[#2C2C2E]">
+                  <span className="text-[10px] sm:text-xs text-gray-400 font-mono font-medium">Solution x</span>
+                  <span className="font-mono text-base sm:text-lg font-bold text-[#30D158]">
                     {formatResult(sysResult.sol.x)}
                   </span>
                 </div>
-                <div className="flex flex-col items-center justify-center p-2 bg-black/60 rounded-lg border border-[#2C2C2E]">
-                  <span className="text-[9px] text-gray-400 font-mono">Solution y</span>
-                  <span className="font-mono text-sm sm:text-base font-bold text-[#30D158]">
+                <div className="flex flex-col items-center justify-center p-3 bg-black/60 rounded-xl border border-[#2C2C2E]">
+                  <span className="text-[10px] sm:text-xs text-gray-400 font-mono font-medium">Solution y</span>
+                  <span className="font-mono text-base sm:text-lg font-bold text-[#30D158]">
                     {formatResult(sysResult.sol.y)}
                   </span>
                 </div>
               </div>
             ) : (
-              <div className="p-2.5 bg-black/40 rounded-lg text-center text-[11px] text-[#FF453A] font-mono">
+              <div className="p-3 bg-black/40 rounded-xl text-center text-xs text-[#FF453A] font-mono">
                 {sysResult.error}
               </div>
             )}
@@ -1246,44 +1246,44 @@ export const EquationSolvers: React.FC = () => {
 
         {/* 9. PROPORTION SOLVER */}
         {activeSolver === 'proportion' && (
-          <div className="flex flex-col gap-2.5">
-            <div className="flex items-center justify-center gap-2 p-2 bg-black rounded-xl border border-[#242424]">
+          <div className="flex flex-col gap-3.5">
+            <div className="flex items-center justify-center gap-3 p-3 bg-black rounded-2xl border border-[#242424] min-h-[100px]">
               {/* Ratio 1: A / B */}
-              <div className="flex flex-col items-center gap-0.5">
-                <NumInput value={propA} onChange={setPropA} className="w-14" />
+              <div className="flex flex-col items-center gap-1">
+                <NumInput value={propA} onChange={setPropA} className="w-16 sm:w-20 md:w-24" />
                 <div className="w-full h-0.5 bg-gray-500 rounded-full" />
-                <NumInput value={propB} onChange={setPropB} className="w-14" />
+                <NumInput value={propB} onChange={setPropB} className="w-16 sm:w-20 md:w-24" />
               </div>
 
-              <span className="font-mono text-base font-bold text-white">=</span>
+              <span className="font-mono text-lg sm:text-xl font-bold text-white">=</span>
 
               {/* Ratio 2: C / x */}
-              <div className="flex flex-col items-center gap-0.5">
-                <NumInput value={propC} onChange={setPropC} className="w-14" />
+              <div className="flex flex-col items-center gap-1">
+                <NumInput value={propC} onChange={setPropC} className="w-16 sm:w-20 md:w-24" />
                 <div className="w-full h-0.5 bg-gray-500 rounded-full" />
-                <div className="w-14 h-7 bg-[#FF9F0A]/20 border border-[#FF9F0A] rounded-md flex items-center justify-center font-mono text-xs font-bold text-[#FF9F0A]">
+                <div className="w-16 sm:w-20 md:w-24 h-9 sm:h-10 md:h-11 bg-[#FF9F0A]/20 border border-[#FF9F0A] rounded-lg flex items-center justify-center font-mono text-sm sm:text-base font-bold text-[#FF9F0A]">
                   x
                 </div>
               </div>
             </div>
 
             {propResult.val !== undefined ? (
-              <div className="grid grid-cols-2 gap-1.5">
-                <div className="flex flex-col items-center justify-center p-2 bg-black/60 rounded-lg border border-[#2C2C2E]">
-                  <span className="text-[9px] text-gray-400 font-mono">Value of x</span>
-                  <span className="font-mono text-sm sm:text-base font-bold text-[#30D158]">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                <div className="flex flex-col items-center justify-center p-3 bg-black/60 rounded-xl border border-[#2C2C2E]">
+                  <span className="text-[10px] sm:text-xs text-gray-400 font-mono font-medium">Value of x</span>
+                  <span className="font-mono text-base sm:text-lg font-bold text-[#30D158]">
                     {formatResult(propResult.val)}
                   </span>
                 </div>
-                <div className="flex flex-col items-center justify-center p-2 bg-black/60 rounded-lg border border-[#2C2C2E]">
-                  <span className="text-[9px] text-gray-400 font-mono">Exact Fraction</span>
-                  <span className="font-mono text-xs sm:text-sm font-bold text-white">
+                <div className="flex flex-col items-center justify-center p-3 bg-black/60 rounded-xl border border-[#2C2C2E]">
+                  <span className="text-[10px] sm:text-xs text-gray-400 font-mono font-medium">Exact Fraction</span>
+                  <span className="font-mono text-sm sm:text-base font-bold text-white">
                     {propResult.frac.numerator}/{propResult.frac.denominator}
                   </span>
                 </div>
               </div>
             ) : (
-              <div className="p-2.5 bg-black/40 rounded-lg text-center text-[11px] text-[#FF453A] font-mono">
+              <div className="p-3 bg-black/40 rounded-xl text-center text-xs text-[#FF453A] font-mono">
                 {propResult.error}
               </div>
             )}
@@ -1291,17 +1291,17 @@ export const EquationSolvers: React.FC = () => {
         )}
 
         {/* Footer Actions */}
-        <div className="flex items-center justify-between pt-1 border-t border-[#2C2C2E]/60 text-xs">
+        <div className="flex items-center justify-between pt-2 border-t border-[#2C2C2E]/60 text-xs sm:text-sm">
           <button
             type="button"
             onClick={() => setShowGraph(!showGraph)}
-            className={`flex items-center gap-1.5 px-3 py-1 rounded-full transition-all border ${
+            className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-full transition-all border font-semibold text-xs sm:text-sm shadow-sm ${
               showGraph
                 ? 'bg-[#FF9F0A]/20 text-[#FF9F0A] border-[#FF9F0A]/50 font-bold'
                 : 'bg-[#242424] hover:bg-[#333333] text-gray-300 hover:text-white border-[#333333]'
             }`}
           >
-            <LineChart className="w-3.5 h-3.5" />
+            <LineChart className="w-4 h-4" />
             <span>{showGraph ? 'Hide Graph' : 'Show Graph'}</span>
           </button>
 
@@ -1331,9 +1331,9 @@ export const EquationSolvers: React.FC = () => {
                 }
                 handleCopy(textToCopy);
               }}
-              className="flex items-center gap-1 px-3 py-1 bg-[#242424] hover:bg-[#333333] text-gray-300 hover:text-white rounded-full transition-colors border border-[#333333]"
+              className="flex items-center gap-1.5 px-3.5 py-1.5 bg-[#242424] hover:bg-[#333333] text-gray-300 hover:text-white rounded-full transition-colors border border-[#333333] text-xs sm:text-sm font-semibold shadow-sm"
             >
-              {copied ? <Check className="w-3.5 h-3.5 text-[#30D158]" /> : <Copy className="w-3.5 h-3.5" />}
+              {copied ? <Check className="w-4 h-4 text-[#30D158]" /> : <Copy className="w-4 h-4" />}
               <span>{copied ? 'Copied' : 'Copy'}</span>
             </button>
 
@@ -1358,9 +1358,9 @@ export const EquationSolvers: React.FC = () => {
                 }
                 handleSendToCalc(val);
               }}
-              className="flex items-center gap-1.5 px-3 py-1 bg-[#242424] hover:bg-[#333333] text-gray-300 hover:text-white rounded-full transition-colors border border-[#333333]"
+              className="flex items-center gap-1.5 px-3.5 py-1.5 bg-[#242424] hover:bg-[#333333] text-gray-300 hover:text-white rounded-full transition-colors border border-[#333333] text-xs sm:text-sm font-semibold shadow-sm"
             >
-              <Calculator className="w-3.5 h-3.5 text-[#FF9F0A]" />
+              <Calculator className="w-4 h-4 text-[#FF9F0A]" />
               <span>Use in Calc</span>
             </button>
           </div>

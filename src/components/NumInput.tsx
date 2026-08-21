@@ -48,12 +48,26 @@ export const NumInput: React.FC<NumInputProps> = ({
     }
   };
 
+  const handlePaste = (e: React.ClipboardEvent<HTMLInputElement>) => {
+    e.preventDefault();
+    const text = e.clipboardData.getData('text');
+    const sanitized = text.trim().replace(/−/g, '-').replace(/,/g, '');
+    if (/^-?[0-9]*\.?[0-9]*([eE][-+]?[0-9]*)?$/.test(sanitized) || sanitized === '-' || sanitized === '' || sanitized === '.') {
+      onChange(sanitized);
+    } else {
+      const num = parseFloat(sanitized);
+      if (!isNaN(num)) {
+        onChange(String(num));
+      }
+    }
+  };
+
   const isNeg = value.trim().startsWith('-');
 
   return (
     <div className={`relative inline-flex items-center group ${className}`}>
       {label && (
-        <span className="text-[10px] text-gray-500 font-mono absolute -top-3.5 left-1 select-none pointer-events-none">
+        <span className="text-xs text-gray-400 font-mono absolute -top-4 left-1 select-none pointer-events-none font-semibold">
           {label}
         </span>
       )}
@@ -65,9 +79,10 @@ export const NumInput: React.FC<NumInputProps> = ({
           inputMode="text"
           value={value}
           onChange={handleChange}
+          onPaste={handlePaste}
           placeholder={placeholder}
-          className={`w-full h-7 sm:h-7.5 bg-[#242424] border border-[#333333] rounded-md px-1.5 text-center font-mono text-xs font-bold text-white focus:border-[#FF9F0A] focus:outline-none transition-colors ${
-            showSignToggle ? 'pr-5' : ''
+          className={`w-full h-9 sm:h-10 md:h-11 bg-[#242424] border border-[#333333] rounded-lg px-2 text-center font-mono text-sm sm:text-base font-bold text-white focus:border-[#FF9F0A] focus:outline-none transition-colors shadow-inner ${
+            showSignToggle ? 'pr-6 sm:pr-7' : ''
           } ${inputClassName}`}
         />
         {showSignToggle && (
@@ -76,13 +91,13 @@ export const NumInput: React.FC<NumInputProps> = ({
             tabIndex={-1}
             onClick={toggleSign}
             title={isNeg ? 'Make positive (+)' : 'Make negative (-)'}
-            className={`absolute right-0.5 w-4 h-4 flex items-center justify-center rounded text-[9px] font-bold transition-all ${
+            className={`absolute right-1 w-4.5 h-4.5 sm:w-5 sm:h-5 flex items-center justify-center rounded-md text-[10px] font-bold transition-all ${
               isNeg
                 ? 'bg-[#FF453A]/20 text-[#FF453A] border border-[#FF453A]/40 hover:bg-[#FF453A]/30'
-                : 'bg-[#333333] text-gray-400 hover:text-white hover:bg-[#444444]'
+                : 'bg-[#333333] text-gray-300 hover:text-white hover:bg-[#444444]'
             }`}
           >
-            {isNeg ? <Minus className="w-2 h-2" /> : <Plus className="w-2 h-2" />}
+            {isNeg ? <Minus className="w-2.5 h-2.5" /> : <Plus className="w-2.5 h-2.5" />}
           </button>
         )}
       </div>
