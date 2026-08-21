@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <rect width="512" height="512" rx="128" fill="#1C1C1E"/>
+  <rect x="64" y="64" width="384" height="384" rx="96" fill="#000000" stroke="#2C2C2E" stroke-width="8"/>
+  <rect x="96" y="96" width="320" height="88" rx="24" fill="#1C1C1E" stroke="#3A3A3C" stroke-width="4"/>
+  <text x="390" y="158" fill="#FF9F0A" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="44" font-weight="bold" text-anchor="end">3.14159</text>
+  <!-- Grid buttons -->
+  <circle cx="152" cy="248" r="32" fill="#2C2C2E"/>
+  <text x="152" y="258" fill="#FFFFFF" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="28" font-weight="bold" text-anchor="middle">7</text>
+  
+  <circle cx="256" cy="248" r="32" fill="#2C2C2E"/>
+  <text x="256" y="258" fill="#FFFFFF" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="28" font-weight="bold" text-anchor="middle">8</text>
+  
+  <circle cx="360" cy="248" r="32" fill="#FF9F0A"/>
+  <text x="360" y="258" fill="#FFFFFF" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="32" font-weight="bold" text-anchor="middle">÷</text>
+
+  <circle cx="152" cy="336" r="32" fill="#2C2C2E"/>
+  <text x="152" y="346" fill="#FFFFFF" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="28" font-weight="bold" text-anchor="middle">4</text>
+  
+  <circle cx="256" cy="336" r="32" fill="#2C2C2E"/>
+  <text x="256" y="346" fill="#FFFFFF" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="28" font-weight="bold" text-anchor="middle">5</text>
+  
+  <circle cx="360" cy="336" r="32" fill="#FF9F0A"/>
+  <text x="360" y="346" fill="#FFFFFF" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="32" font-weight="bold" text-anchor="middle">×</text>
+
+  <circle cx="152" cy="424" r="32" fill="#A5A5A5"/>
+  <text x="152" y="434" fill="#000000" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="24" font-weight="bold" text-anchor="middle">CLR</text>
+  
+  <circle cx="256" cy="424" r="32" fill="#2C2C2E"/>
+  <text x="256" y="434" fill="#FFFFFF" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="28" font-weight="bold" text-anchor="middle">0</text>
+  
+  <circle cx="360" cy="424" r="32" fill="#FF9F0A"/>
+  <text x="360" y="434" fill="#FFFFFF" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="32" font-weight="bold" text-anchor="middle">=</text>
+</svg>
