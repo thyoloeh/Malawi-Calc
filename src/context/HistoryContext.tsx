@@ -14,15 +14,9 @@ interface HistoryContextType {
   setActiveModule: (mod: 'standard' | 'fractions' | 'equations' | 'conversions' | 'statistics') => void;
   injectedExpression: string | null;
   setInjectedExpression: (expr: string | null) => void;
-  appClipboard: string | null;
-  copyText: (text: string, label?: string) => Promise<boolean>;
-  pasteText: () => Promise<string | null>;
-  toastMessage: string | null;
-  showToast: (msg: string) => void;
 }
 
 const STORAGE_KEY = 'smart_calc_history_v2';
-const CLIPBOARD_STORAGE_KEY = 'smart_calc_clipboard_v1';
 
 const HistoryContext = createContext<HistoryContextType | undefined>(undefined);
 
@@ -42,30 +36,6 @@ export const HistoryProvider: React.FC<{ children: React.ReactNode }> = ({ child
   const [selectedHistoryItem, setSelectedHistoryItem] = useState<HistoryItem | null>(null);
   const [activeModule, setActiveModule] = useState<'standard' | 'fractions' | 'equations' | 'conversions' | 'statistics'>('standard');
   const [injectedExpression, setInjectedExpression] = useState<string | null>(null);
-  
-  // App-level clipboard cache
-  const [appClipboard, setAppClipboard] = useState<string | null>(() => {
-    try {
-      return localStorage.getItem(CLIPBOARD_STORAGE_KEY) || null;
-    } catch {
-      return null;
-    }
-  });
-
-  // Global Toast indicator for copy/paste feedback
-  const [toastMessage, setToastMessage] = useState<string | null>(null);
-
-  const showToast = useCallback((msg: string) => {
-    setToastMessage(msg);
-  }, []);
-
-  useEffect(() => {
-    if (!toastMessage) return;
-    const timer = setTimeout(() => {
-      setToastMessage(null);
-    }, 2400);
-    return () => clearTimeout(timer);
-  }, [toastMessage]);
 
   useEffect(() => {
     try {
@@ -92,51 +62,6 @@ export const HistoryProvider: React.FC<{ children: React.ReactNode }> = ({ child
     setHistory((prev) => prev.filter((item) => item.id !== id));
   };
 
-  const copyText = useCallback(async (text: string, label?: string): Promise<boolean> => {
-    if (!text && text !== '0') return false;
-    const cleanStr = String(text).trim();
-    setAppClipboard(cleanStr);
-    try {
-      localStorage.setItem(CLIPBOARD_STORAGE_KEY, cleanStr);
-    } catch {}
-
-    try {
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        await navigator.clipboard.writeText(cleanStr);
-      }
-      showToast(label ? `Copied: ${label}` : `Copied: "${cleanStr.length > 25 ? cleanStr.slice(0, 25) + '...' : cleanStr}"`);
-      return true;
-    } catch (err) {
-      console.warn('System clipboard write restricted, cached in app clipboard', err);
-      showToast(`Copied to app clipboard`);
-      return true;
-    }
-  }, [showToast]);
-
-  const pasteText = useCallback(async (): Promise<string | null> => {
-    let text = '';
-    try {
-      if (navigator.clipboard && navigator.clipboard.readText) {
-        text = await navigator.clipboard.readText();
-      }
-    } catch (err) {
-      console.warn('Clipboard readText restricted, using app clipboard fallback', err);
-    }
-
-    if (!text) {
-      text = appClipboard || localStorage.getItem(CLIPBOARD_STORAGE_KEY) || '';
-    }
-
-    if (text) {
-      const clean = text.trim();
-      showToast(`Pasted: "${clean.length > 25 ? clean.slice(0, 25) + '...' : clean}"`);
-      return clean;
-    } else {
-      showToast('Clipboard is empty');
-      return null;
-    }
-  }, [appClipboard, showToast]);
-
   return (
     <HistoryContext.Provider
       value={{
@@ -152,11 +77,6 @@ export const HistoryProvider: React.FC<{ children: React.ReactNode }> = ({ child
         setActiveModule,
         injectedExpression,
         setInjectedExpression,
-        appClipboard,
-        copyText,
-        pasteText,
-        toastMessage,
-        showToast,
       }}
     >
       {children}
